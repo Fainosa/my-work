@@ -2,9 +2,6 @@ package ro.ase.csie.licenta;
 
 import java.util.Date;
 
-/**
- * Created by valkr on 6/14/2017.
- */
 public class Antrenor {
     private String nume;
     private String prenume;

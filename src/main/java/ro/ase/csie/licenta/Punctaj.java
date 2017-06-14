@@ -1,8 +1,5 @@
 package ro.ase.csie.licenta;
 
-/**
- * Created by valkr on 6/14/2017.
- */
 public class Punctaj {
 
 private int unPunct;

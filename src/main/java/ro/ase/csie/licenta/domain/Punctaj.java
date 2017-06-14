@@ -1,4 +1,4 @@
-package ro.ase.csie.licenta;
+package ro.ase.csie.licenta.domain;
 
 public class Punctaj {
 

@@ -3,10 +3,12 @@ package ro.ase.csie.licenta.domain;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "competitie")
 public class Competitie {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -16,30 +18,34 @@ public class Competitie {
     private Date dataTerminare;
     private String locatie;
 
-   @OneToMany(cascade = CascadeType.ALL, mappedBy = "echipa")
-   @JoinColumn(name = "id_echipa")
-   private ArrayList<Echipa> listaEchipe;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "meci")
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_echipa")
+    private Echipa echipa;
+
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_meci")
-   private ArrayList<Meci> listaMeciuri;
+    private Meci meci;
 
 
-
-    public  Competitie(){
+    public Competitie() {
 
     }
 
-
-
-    public Competitie(String nume, Date dataIncepere, Date dataTerminare, String locatie, ArrayList<Echipa> listaEchipe, ArrayList<Meci> listaMeciuri) {
-        this.id = id;
+    public Competitie(String nume, Date dataIncepere, Date dataTerminare, String locatie, Echipa echipa, Meci meci) {
         this.nume = nume;
         this.dataIncepere = dataIncepere;
         this.dataTerminare = dataTerminare;
         this.locatie = locatie;
-        this.listaEchipe = listaEchipe;
-        this.listaMeciuri = listaMeciuri;
+        this.echipa = echipa;
+        this.meci = meci;
+    }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNume() {
@@ -74,30 +80,21 @@ public class Competitie {
         this.locatie = locatie;
     }
 
-    public long getId() {
-        return id;
+    public Echipa getEchipa() {
+        return echipa;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setEchipa(Echipa echipa) {
+        this.echipa = echipa;
     }
 
-    public ArrayList<Echipa> getListaEchipe() {
-        return listaEchipe;
+    public Meci getMeci() {
+        return meci;
     }
 
-    public void setListaEchipe(Echipa echipa) {
-        this.listaEchipe.add(echipa);
+    public void setMeci(Meci meci) {
+        this.meci = meci;
     }
-
-    public ArrayList<Meci> getListaMeciuri() {
-        return listaMeciuri;
-    }
-
-    public void setListaMeciuri(Meci meci) {
-        this.listaMeciuri.add(meci);
-    }
-
 
     @Override
     public String toString() {
@@ -107,8 +104,8 @@ public class Competitie {
                 ", dataIncepere=" + dataIncepere +
                 ", dataTerminare=" + dataTerminare +
                 ", locatie='" + locatie + '\'' +
-                ", listaEchipe=" + listaEchipe +
-                ", listaMeciuri=" + listaMeciuri +
+                ", echipa=" + echipa +
+                ", meci=" + meci +
                 '}';
     }
 }

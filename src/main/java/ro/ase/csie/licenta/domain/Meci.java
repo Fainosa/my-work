@@ -1,35 +1,45 @@
 package ro.ase.csie.licenta.domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
 
 @Entity
 @Table(name = "meci")
 public class Meci {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String echipaGazda;
     private String echipaOaspete;
     private Date data;
-    private Date ora;
-    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_punctaj")
-    private ArrayList<Punctaj> listaPuncte;
+
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_1p")
+    private Tabela1P tabela1P;
+
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_2p")
+    private Tabela2P tabela2P;
 
     public Meci(){
 
     }
 
-
-    public Meci( String echipaGazda, String echipaOaspete, Date data, Date ora, ArrayList<Punctaj> listaPuncte) {
-
+    public Meci(String echipaGazda, String echipaOaspete, Date data, Tabela1P tabela1P, Tabela2P tabela2P) {
         this.echipaGazda = echipaGazda;
         this.echipaOaspete = echipaOaspete;
         this.data = data;
-        this.ora = ora;
-        this.listaPuncte = listaPuncte;
+        this.tabela1P = tabela1P;
+        this.tabela2P = tabela2P;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getEchipaGazda() {
@@ -56,39 +66,19 @@ public class Meci {
         this.data = data;
     }
 
-    public Date getOra() {
-        return ora;
+    public Tabela1P getTabela1P() {
+        return tabela1P;
     }
 
-    public void setOra(Date ora) {
-        this.ora = ora;
+    public void setTabela1P(Tabela1P tabela1P) {
+        this.tabela1P = tabela1P;
     }
 
-    public long getId() {
-        return id;
+    public Tabela2P getTabela2P() {
+        return tabela2P;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public ArrayList<Punctaj> getListaPuncte() {
-        return listaPuncte;
-    }
-
-    public void setListaPuncte(Punctaj punctaj) {
-        this.listaPuncte.add(punctaj);
-    }
-
-    @Override
-    public String toString() {
-        return "Meci{" +
-                "id=" + id +
-                ", echipaGazda='" + echipaGazda + '\'' +
-                ", echipaOaspete='" + echipaOaspete + '\'' +
-                ", data=" + data +
-                ", ora=" + ora +
-                ", listaPuncte=" + listaPuncte +
-                '}';
+    public void setTabela2P(Tabela2P tabela2P) {
+        this.tabela2P = tabela2P;
     }
 }

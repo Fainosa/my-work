@@ -6,6 +6,7 @@ import java.util.Date;
 @Entity
 @Table(name = "jucator")
 public class Jucator {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

@@ -1,7 +1,11 @@
 package ro.ase.csie.licenta.repository;
 
-/**
- * Created by andra.popescu on 6/17/2017.
- */
-public class JucatorRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import ro.ase.csie.licenta.domain.Jucator;
+
+import java.util.List;
+
+public interface JucatorRepository extends JpaRepository<Jucator, Long> {
+    List<Jucator> findByNume(String nume);
+
 }

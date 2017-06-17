@@ -1,23 +1,40 @@
 package ro.ase.csie.licenta.domain;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+@Entity
+@Table(name = "echipa")
 
 public class Echipa {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long idEchipa;
+
     private String numeEchipa;
     private String locatie;
-    private Date dataInceperii;
+    private Date dataInfiintare;
 
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_jucator")
+    private ArrayList<Jucator> listaJucatori;
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_antrenor")
+    private ArrayList<Antrenor> listaAntrenori;
 
     public Echipa(){
 
     }
-    public Echipa(String numeEchipa, String locatie, Date dataInceperii) {
+
+
+    public Echipa( String numeEchipa, String locatie, Date dataInfiintare, ArrayList<Jucator> listaJucatori, ArrayList<Antrenor> listaAntrenori) {
+
         this.numeEchipa = numeEchipa;
         this.locatie = locatie;
-        this.dataInceperii = dataInceperii;
-
+        this.dataInfiintare = dataInfiintare;
+        this.listaJucatori = listaJucatori;
+        this.listaAntrenori = listaAntrenori;
     }
 
     public String getNumeEchipa() {
@@ -36,22 +53,47 @@ public class Echipa {
         this.locatie = locatie;
     }
 
-    public Date getDataInceperii() {
-        return dataInceperii;
+    public Date getDataInfiintare() {
+        return dataInfiintare;
     }
 
-    public void setDataInceperii(Date dataInceperii) {
-        this.dataInceperii = dataInceperii;
+    public void setDataInfiintare(Date dataInfiintare) {
+        this.dataInfiintare = dataInfiintare;
     }
 
+    public long getIdEchipa() {
+        return idEchipa;
+    }
 
+    public void setIdEchipa(long idEchipa) {
+        this.idEchipa = idEchipa;
+    }
+
+    public ArrayList<Jucator> getListaJucatori() {
+        return listaJucatori;
+    }
+
+    public void setListaJucatori(Jucator jucator) {
+        this.listaJucatori.add(jucator);
+    }
+
+    public ArrayList<Antrenor> getListaAntrenori() {
+        return listaAntrenori;
+    }
+
+    public void setListaAntrenori(Antrenor antrenor) {
+        this.listaAntrenori.add(antrenor);
+    }
 
     @Override
     public String toString() {
         return "Echipa{" +
-                "numeEchipa='" + numeEchipa + '\'' +
+                "idEchipa=" + idEchipa +
+                ", numeEchipa='" + numeEchipa + '\'' +
                 ", locatie='" + locatie + '\'' +
-                ", dataInceperii=" + dataInceperii +
+                ", dataInfiintare=" + dataInfiintare +
+                ", listaJucatori=" + listaJucatori +
+                ", listaAntrenori=" + listaAntrenori +
                 '}';
     }
 }

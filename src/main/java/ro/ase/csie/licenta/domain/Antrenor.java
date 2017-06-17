@@ -1,9 +1,14 @@
 package ro.ase.csie.licenta.domain;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "antrenor")
 public class Antrenor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String nume;
     private String prenume;
     private Date dataNasterii;
@@ -62,10 +67,19 @@ public class Antrenor {
         this.telefon = telefon;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Antrenor{" +
-                "nume='" + nume + '\'' +
+                "id=" + id +
+                ", nume='" + nume + '\'' +
                 ", prenume='" + prenume + '\'' +
                 ", dataNasterii=" + dataNasterii +
                 ", eMail='" + eMail + '\'' +

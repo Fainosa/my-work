@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface JucatorRepository extends JpaRepository<Jucator, Long> {
     List<Jucator> findByNume(String nume);
-
 }

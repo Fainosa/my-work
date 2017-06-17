@@ -1,6 +1,5 @@
 package ro.ase.csie.licenta.domain;
 
-import javax.persistence.Entity;
 import java.util.Date;
 
 public class Antrenor {

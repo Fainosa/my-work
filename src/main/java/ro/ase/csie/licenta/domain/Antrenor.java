@@ -17,7 +17,7 @@ public class Antrenor {
     private String telefon;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="is_echipa")
+    @JoinColumn(name="id_echipa")
     private Echipa echipa;
 
     public Antrenor(){

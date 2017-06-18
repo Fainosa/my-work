@@ -2,6 +2,7 @@ package ro.ase.csie.licenta.domain;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "meci")
@@ -14,24 +15,31 @@ public class Meci {
     private String echipaOaspete;
     private Date data;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_1p")
-    private Tabela1P tabela1P;
+    @OneToMany(mappedBy = "meci")
+    private List<Tabela1P> tabela1P;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_2p")
-    private Tabela2P tabela2P;
+    @OneToMany(mappedBy = "meci")
+    private List<Tabela2P> tabela2P;
+
+    @OneToMany(mappedBy = "meci")
+    private List<Echipa> echipe;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="id_competitie")
+    private Competitie competitie;
 
     public Meci(){
 
     }
 
-    public Meci(String echipaGazda, String echipaOaspete, Date data, Tabela1P tabela1P, Tabela2P tabela2P) {
+    public Meci(String echipaGazda, String echipaOaspete, Date data, List<Tabela1P> tabela1P, List<Tabela2P> tabela2P, List<Echipa> echipe, Competitie competitie) {
         this.echipaGazda = echipaGazda;
         this.echipaOaspete = echipaOaspete;
         this.data = data;
         this.tabela1P = tabela1P;
         this.tabela2P = tabela2P;
+        this.echipe = echipe;
+        this.competitie = competitie;
     }
 
     public long getId() {
@@ -66,19 +74,35 @@ public class Meci {
         this.data = data;
     }
 
-    public Tabela1P getTabela1P() {
+    public List<Tabela1P> getTabela1P() {
         return tabela1P;
     }
 
-    public void setTabela1P(Tabela1P tabela1P) {
+    public void setTabela1P(List<Tabela1P> tabela1P) {
         this.tabela1P = tabela1P;
     }
 
-    public Tabela2P getTabela2P() {
+    public List<Tabela2P> getTabela2P() {
         return tabela2P;
     }
 
-    public void setTabela2P(Tabela2P tabela2P) {
+    public void setTabela2P(List<Tabela2P> tabela2P) {
         this.tabela2P = tabela2P;
+    }
+
+    public List<Echipa> getEchipe() {
+        return echipe;
+    }
+
+    public void setEchipe(List<Echipa> echipe) {
+        this.echipe = echipe;
+    }
+
+    public Competitie getCompetitie() {
+        return competitie;
+    }
+
+    public void setCompetitie(Competitie competitie) {
+        this.competitie = competitie;
     }
 }

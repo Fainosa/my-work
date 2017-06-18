@@ -13,12 +13,17 @@ public class Tabela1P {
     private String tipPunct;
     private int valoare;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="id_meci")
+    private Meci meci;
+
     public Tabela1P() {
     }
 
-    public Tabela1P(String tipPunct, int valoare) {
+    public Tabela1P(String tipPunct, int valoare, Meci meci) {
         this.tipPunct = tipPunct;
         this.valoare = valoare;
+        this.meci = meci;
     }
 
     public long getId() {
@@ -43,5 +48,13 @@ public class Tabela1P {
 
     public void setValoare(int valoare) {
         this.valoare = valoare;
+    }
+
+    public Meci getMeci() {
+        return meci;
+    }
+
+    public void setMeci(Meci meci) {
+        this.meci = meci;
     }
 }

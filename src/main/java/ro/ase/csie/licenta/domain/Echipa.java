@@ -25,16 +25,21 @@ public class Echipa {
     @OneToMany(mappedBy = "echipa")
     private List<Antrenor> antrenori;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="id_meci")
+    private Meci meci;
+
     public Echipa() {
 
     }
 
-    public Echipa(String numeEchipa, String locatie, Date dataInfiintare, List<Jucator> jucatori, List<Antrenor> antrenori) {
+    public Echipa(String numeEchipa, String locatie, Date dataInfiintare, List<Jucator> jucatori, List<Antrenor> antrenori, Meci meci) {
         this.numeEchipa = numeEchipa;
         this.locatie = locatie;
         this.dataInfiintare = dataInfiintare;
         this.jucatori = jucatori;
         this.antrenori = antrenori;
+        this.meci = meci;
     }
 
     public long getIdEchipa() {
@@ -69,19 +74,27 @@ public class Echipa {
         this.dataInfiintare = dataInfiintare;
     }
 
-    public List<Jucator> getJucatoir() {
+    public List<Jucator> getJucatori() {
         return jucatori;
     }
 
-    public void setJucatori(List<Jucator> jucator) {
+    public void setJucatori(List<Jucator> jucatori) {
         this.jucatori = jucatori;
     }
 
-    public List<Antrenor> getAntrenor() {
+    public List<Antrenor> getAntrenori() {
         return antrenori;
     }
 
     public void setAntrenori(List<Antrenor> antrenori) {
         this.antrenori = antrenori;
+    }
+
+    public Meci getMeci() {
+        return meci;
+    }
+
+    public void setMeci(Meci meci) {
+        this.meci = meci;
     }
 }

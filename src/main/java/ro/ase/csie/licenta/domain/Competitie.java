@@ -18,26 +18,20 @@ public class Competitie {
     private Date dataTerminare;
     private String locatie;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_echipa")
-    private Echipa echipa;
-
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_meci")
-    private Meci meci;
+    @OneToMany(mappedBy = "competitie")
+    private List<Meci> meciuri;
 
 
     public Competitie() {
 
     }
 
-    public Competitie(String nume, Date dataIncepere, Date dataTerminare, String locatie, Echipa echipa, Meci meci) {
+    public Competitie(String nume, Date dataIncepere, Date dataTerminare, String locatie, List<Meci> meciuri) {
         this.nume = nume;
         this.dataIncepere = dataIncepere;
         this.dataTerminare = dataTerminare;
         this.locatie = locatie;
-        this.echipa = echipa;
-        this.meci = meci;
+        this.meciuri = meciuri;
     }
 
     public long getId() {
@@ -80,20 +74,12 @@ public class Competitie {
         this.locatie = locatie;
     }
 
-    public Echipa getEchipa() {
-        return echipa;
+    public List<Meci> getMeciuri() {
+        return meciuri;
     }
 
-    public void setEchipa(Echipa echipa) {
-        this.echipa = echipa;
-    }
-
-    public Meci getMeci() {
-        return meci;
-    }
-
-    public void setMeci(Meci meci) {
-        this.meci = meci;
+    public void setMeciuri(List<Meci> meciuri) {
+        this.meciuri = meciuri;
     }
 
     @Override
@@ -104,8 +90,7 @@ public class Competitie {
                 ", dataIncepere=" + dataIncepere +
                 ", dataTerminare=" + dataTerminare +
                 ", locatie='" + locatie + '\'' +
-                ", echipa=" + echipa +
-                ", meci=" + meci +
+                ", meciuri=" + meciuri +
                 '}';
     }
 }

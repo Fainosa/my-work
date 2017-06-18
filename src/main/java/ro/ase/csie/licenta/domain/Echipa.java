@@ -3,6 +3,7 @@ package ro.ase.csie.licenta.domain;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "echipa")
@@ -10,6 +11,7 @@ import java.util.Date;
 public class Echipa {
 
     @Id
+    @Column(name = "id_echipa")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long idEchipa;
 
@@ -17,24 +19,22 @@ public class Echipa {
     private String locatie;
     private Date dataInfiintare;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_jucator")
-    private Jucator jucator;
+    @OneToMany(mappedBy = "echipa")
+    private List<Jucator> jucatori;
 
-    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_antrenor")
-    private Antrenor antrenor;
+    @OneToMany(mappedBy = "echipa")
+    private List<Antrenor> antrenori;
 
     public Echipa() {
 
     }
 
-    public Echipa(String numeEchipa, String locatie, Date dataInfiintare, Jucator jucator, Antrenor antrenor) {
+    public Echipa(String numeEchipa, String locatie, Date dataInfiintare, List<Jucator> jucatori, List<Antrenor> antrenori) {
         this.numeEchipa = numeEchipa;
         this.locatie = locatie;
         this.dataInfiintare = dataInfiintare;
-        this.jucator = jucator;
-        this.antrenor = antrenor;
+        this.jucatori = jucatori;
+        this.antrenori = antrenori;
     }
 
     public long getIdEchipa() {
@@ -69,19 +69,19 @@ public class Echipa {
         this.dataInfiintare = dataInfiintare;
     }
 
-    public Jucator getJucator() {
-        return jucator;
+    public List<Jucator> getJucatoir() {
+        return jucatori;
     }
 
-    public void setJucator(Jucator jucator) {
-        this.jucator = jucator;
+    public void setJucatori(List<Jucator> jucator) {
+        this.jucatori = jucatori;
     }
 
-    public Antrenor getAntrenor() {
-        return antrenor;
+    public List<Antrenor> getAntrenor() {
+        return antrenori;
     }
 
-    public void setAntrenor(Antrenor antrenor) {
-        this.antrenor = antrenor;
+    public void setAntrenori(List<Antrenor> antrenori) {
+        this.antrenori = antrenori;
     }
 }

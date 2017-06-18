@@ -18,11 +18,15 @@ public class Jucator {
     private String eMail;
     private int numarJucator;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="id_echipa")
+    private Echipa echipa;
+
     public Jucator(){
 
     }
 
-    public Jucator(String nume, String prenume, float inaltime, float greutate, Date dataNasterii, String eMail, int numarJucator) {
+    public Jucator(String nume, String prenume, float inaltime, float greutate, Date dataNasterii, String eMail, int numarJucator, Echipa echipa) {
         this.nume = nume;
         this.prenume = prenume;
         this.inaltime = inaltime;
@@ -30,6 +34,15 @@ public class Jucator {
         this.dataNasterii = dataNasterii;
         this.eMail = eMail;
         this.numarJucator = numarJucator;
+        this.echipa = echipa;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNume() {
@@ -88,25 +101,11 @@ public class Jucator {
         this.numarJucator = numarJucator;
     }
 
-    public long getId() {
-        return id;
+    public Echipa getEchipa() {
+        return echipa;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "Jucator{" +
-                "id=" + id +
-                ", nume='" + nume + '\'' +
-                ", prenume='" + prenume + '\'' +
-                ", inaltime=" + inaltime +
-                ", greutate=" + greutate +
-                ", dataNasterii=" + dataNasterii +
-                ", eMail='" + eMail + '\'' +
-                ", numarJucator=" + numarJucator +
-                '}';
+    public void setEchipa(Echipa echipa) {
+        this.echipa = echipa;
     }
 }

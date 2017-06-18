@@ -16,16 +16,29 @@ public class Antrenor {
     private String eMail;
     private String telefon;
 
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="is_echipa")
+    private Echipa echipa;
+
     public Antrenor(){
 
     }
 
-    public Antrenor(String nume, String prenume, Date dataNasterii, String eMail, String telefon) {
+    public Antrenor(String nume, String prenume, Date dataNasterii, String eMail, String telefon, Echipa echipa) {
         this.nume = nume;
         this.prenume = prenume;
         this.dataNasterii = dataNasterii;
         this.eMail = eMail;
         this.telefon = telefon;
+        this.echipa = echipa;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getNume() {
@@ -68,23 +81,11 @@ public class Antrenor {
         this.telefon = telefon;
     }
 
-    public long getId() {
-        return id;
+    public Echipa getEchipa() {
+        return echipa;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "Antrenor{" +
-                "id=" + id +
-                ", nume='" + nume + '\'' +
-                ", prenume='" + prenume + '\'' +
-                ", dataNasterii=" + dataNasterii +
-                ", eMail='" + eMail + '\'' +
-                ", telefon='" + telefon + '\'' +
-                '}';
+    public void setEchipa(Echipa echipa) {
+        this.echipa = echipa;
     }
 }

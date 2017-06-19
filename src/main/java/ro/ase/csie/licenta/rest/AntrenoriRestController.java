@@ -7,7 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import ro.ase.csie.licenta.domain.Antrenor;
+import ro.ase.csie.licenta.domain.Echipa;
+import ro.ase.csie.licenta.domain.Jucator;
 import ro.ase.csie.licenta.repository.AntrenorRepository;
+import ro.ase.csie.licenta.repository.EchipaRepository;
 
 import java.util.List;
 
@@ -17,6 +20,9 @@ public class AntrenoriRestController {
 
     @Autowired
     private AntrenorRepository repository;
+
+    @Autowired
+    private EchipaRepository echipaRepository;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<Antrenor>> getAllAntrenori() {
@@ -87,5 +93,22 @@ public class AntrenoriRestController {
         repository.save(antrenor);
 
         return new ResponseEntity<>(antrenor, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/echipa/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Antrenor>> getJucatoriByEchipa(@PathVariable("id") long id) {
+        Echipa echipa = echipaRepository.findOne(id);
+
+        if(echipa == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        List<Antrenor> result = (List<Antrenor>) repository.findByEchipa(echipa);
+
+        if(result == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

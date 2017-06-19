@@ -6,7 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+import ro.ase.csie.licenta.domain.Echipa;
 import ro.ase.csie.licenta.domain.Jucator;
+import ro.ase.csie.licenta.repository.EchipaRepository;
 import ro.ase.csie.licenta.repository.JucatorRepository;
 
 import java.util.List;
@@ -17,6 +19,9 @@ public class JucatoriRestController {
 
     @Autowired
     private JucatorRepository repository;
+
+    @Autowired
+    private EchipaRepository echipaRepository;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<Jucator>> getAllEmployees() {
@@ -87,6 +92,23 @@ public class JucatoriRestController {
         repository.save(jucator);
 
         return new ResponseEntity<>(jucator, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/echipa/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Jucator>> getJucatoriByEchipa(@PathVariable("id") long id) {
+        Echipa echipa = echipaRepository.findOne(id);
+
+        if(echipa == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        List<Jucator> result = (List<Jucator>) repository.findByEchipa(echipa);
+
+        if(result == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
 }

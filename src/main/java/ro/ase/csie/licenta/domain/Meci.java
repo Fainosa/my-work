@@ -9,8 +9,10 @@ import java.util.List;
 public class Meci {
 
     @Id
+    @Column(name = "id_meci")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String echipaGazda;
     private String echipaOaspete;
     private Date data;

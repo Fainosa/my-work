@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Tabela2P {
 
     @Id
+    @Column(name = "id_tabela2p")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 

@@ -6,7 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+import ro.ase.csie.licenta.domain.Meci;
 import ro.ase.csie.licenta.domain.Tabela2P;
+import ro.ase.csie.licenta.repository.MeciRepository;
 import ro.ase.csie.licenta.repository.Tabela2PRepository;
 
 import java.util.List;
@@ -18,6 +20,9 @@ public class Tabela2PRestController {
 
     @Autowired
     private Tabela2PRepository repository;
+
+    @Autowired
+    private MeciRepository meciRepository;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<Tabela2P>> getAllTabela2P() {
@@ -43,7 +48,7 @@ public class Tabela2PRestController {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public ResponseEntity<Tabela2P> getTabela1pById(@PathVariable("id") long id) {
+    public ResponseEntity<Tabela2P> getTabela2pById(@PathVariable("id") long id) {
         Tabela2P result = repository.findOne(id);
 
         if (result == null) {
@@ -79,4 +84,22 @@ public class Tabela2PRestController {
 
         return new ResponseEntity<>(tabela2P, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/meci/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Tabela2P>> getTabela2pByMeci(@PathVariable("id") long id) {
+        Meci meci = meciRepository.findOne(id);
+
+        if(meci == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        List<Tabela2P> result = (List<Tabela2P>) repository.findByMeci(meci);
+
+        if(result == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
 }

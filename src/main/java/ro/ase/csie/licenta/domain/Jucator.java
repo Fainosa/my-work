@@ -8,8 +8,10 @@ import java.util.Date;
 public class Jucator {
 
     @Id
+    @Column(name = "id_jucator")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
     private String nume;
     private String prenume;
     private float inaltime;

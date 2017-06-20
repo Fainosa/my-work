@@ -1,7 +1,6 @@
 package ro.ase.csie.licenta.domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +9,7 @@ import java.util.List;
 public class Competitie {
 
     @Id
+    @Column(name = "id_competitie")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 

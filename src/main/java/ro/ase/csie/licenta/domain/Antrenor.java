@@ -8,8 +8,10 @@ import java.util.Date;
 public class Antrenor {
 
     @Id
+    @Column(name = "id_antrenor")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    
     private String nume;
     private String prenume;
     private Date dataNasterii;

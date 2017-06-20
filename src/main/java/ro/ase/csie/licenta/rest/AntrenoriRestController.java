@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import ro.ase.csie.licenta.domain.Antrenor;
 import ro.ase.csie.licenta.domain.Echipa;
-import ro.ase.csie.licenta.domain.Jucator;
 import ro.ase.csie.licenta.repository.AntrenorRepository;
 import ro.ase.csie.licenta.repository.EchipaRepository;
 

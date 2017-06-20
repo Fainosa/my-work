@@ -1,7 +1,6 @@
 package ro.ase.csie.licenta.domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +12,7 @@ public class Echipa {
     @Id
     @Column(name = "id_echipa")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idEchipa;
+    private long id;
 
     private String numeEchipa;
     private String locatie;
@@ -42,12 +41,12 @@ public class Echipa {
         this.meci = meci;
     }
 
-    public long getIdEchipa() {
-        return idEchipa;
+    public long getId() {
+        return id;
     }
 
     public void setIdEchipa(long idEchipa) {
-        this.idEchipa = idEchipa;
+        this.id = idEchipa;
     }
 
     public String getNumeEchipa() {

@@ -1,5 +1,7 @@
 package ro.ase.csie.licenta.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -82,7 +84,7 @@ public class Antrenor {
     public void setTelefon(String telefon) {
         this.telefon = telefon;
     }
-
+    @JsonIgnore
     public Echipa getEchipa() {
         return echipa;
     }

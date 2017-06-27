@@ -21,16 +21,18 @@ public class Jucator {
     private Date dataNasterii;
     private String eMail;
     private int numarJucator;
+    private String parola;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="id_echipa")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_echipa")
     private Echipa echipa;
 
-    public Jucator(){
+    public Jucator() {
 
     }
 
-    public Jucator(String nume, String prenume, float inaltime, float greutate, Date dataNasterii, String eMail, int numarJucator, Echipa echipa) {
+    public Jucator(String nume, String prenume, float inaltime, float greutate, Date dataNasterii, String eMail, int numarJucator, String parola, Echipa echipa) {
+        this.id = id;
         this.nume = nume;
         this.prenume = prenume;
         this.inaltime = inaltime;
@@ -38,6 +40,7 @@ public class Jucator {
         this.dataNasterii = dataNasterii;
         this.eMail = eMail;
         this.numarJucator = numarJucator;
+        this.parola = parola;
         this.echipa = echipa;
     }
 
@@ -103,6 +106,14 @@ public class Jucator {
 
     public void setNumarJucator(int numarJucator) {
         this.numarJucator = numarJucator;
+    }
+
+    public String getParola() {
+        return parola;
+    }
+
+    public void setParola(String parola) {
+        this.parola = parola;
     }
 
     @JsonIgnore

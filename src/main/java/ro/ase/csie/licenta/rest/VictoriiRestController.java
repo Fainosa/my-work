@@ -6,27 +6,27 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-import ro.ase.csie.licenta.domain.Meci;
-import ro.ase.csie.licenta.domain.Tabela2P;
-import ro.ase.csie.licenta.repository.MeciRepository;
-import ro.ase.csie.licenta.repository.Tabela2PRepository;
+import ro.ase.csie.licenta.domain.Echipa;
+import ro.ase.csie.licenta.domain.Victorii;
+import ro.ase.csie.licenta.repository.EchipaRepository;
+import ro.ase.csie.licenta.repository.VictoriiRepository;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/tabela2p")
-public class Tabela2PRestController {
+@RequestMapping(value = "/victorii")
+public class VictoriiRestController {
 
 
     @Autowired
-    private Tabela2PRepository repository;
+    private VictoriiRepository repository;
 
     @Autowired
-    private MeciRepository meciRepository;
+    private EchipaRepository echipaRepository;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public ResponseEntity<List<Tabela2P>> getAllTabela2P() {
-        List<Tabela2P> result = repository.findAll();
+    public ResponseEntity<List<Victorii>> getAllVictorii() {
+        List<Victorii> result = repository.findAll();
 
         if (result.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -37,19 +37,19 @@ public class Tabela2PRestController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ResponseEntity<Void> addTabela2P(@RequestBody Tabela2P tabela2P, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<Void> addVictorii(@RequestBody Victorii victorii, UriComponentsBuilder ucBuilder) {
 
-        repository.save(tabela2P);
+        repository.save(victorii);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("tabela2p/{id}").buildAndExpand(tabela2P.getId()).toUri());
+        headers.setLocation(ucBuilder.path("victorii/{id}").buildAndExpand(victorii.getId()).toUri());
 
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public ResponseEntity<Tabela2P> getTabela2pById(@PathVariable("id") long id) {
-        Tabela2P result = repository.findOne(id);
+    public ResponseEntity<Victorii> getVictoriiById(@PathVariable("id") long id) {
+        Victorii result = repository.findOne(id);
 
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -60,8 +60,8 @@ public class Tabela2PRestController {
 
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Tabela2P> deleteTabela2P(@PathVariable("id") long id) {
-        Tabela2P result = repository.findOne(id);
+    public ResponseEntity<Victorii> deleteVictorii(@PathVariable("id") long id) {
+        Victorii result = repository.findOne(id);
 
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -73,27 +73,27 @@ public class Tabela2PRestController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public ResponseEntity<Tabela2P> updateTabela2P(@RequestBody Tabela2P tabela2P) {
-        Tabela2P result = repository.findOne(tabela2P.getId());
+    public ResponseEntity<Victorii> updateVictorii(@RequestBody Victorii victorii) {
+        Victorii result = repository.findOne(victorii.getId());
 
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        repository.save(tabela2P);
+        repository.save(victorii);
 
-        return new ResponseEntity<>(tabela2P, HttpStatus.OK);
+        return new ResponseEntity<>(victorii, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/meci/{id}", method = RequestMethod.GET)
-    public ResponseEntity<List<Tabela2P>> getTabela2pByMeci(@PathVariable("id") long id) {
-        Meci meci = meciRepository.findOne(id);
+    @RequestMapping(value = "/echipa/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Victorii>> getVictoriiByEchipa(@PathVariable("id") long id) {
+        Echipa echipa = echipaRepository.findOne(id);
 
-        if(meci == null) {
+        if(echipa == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        List<Tabela2P> result = (List<Tabela2P>) repository.findByMeci(meci);
+        List<Victorii> result = (List<Victorii>) repository.findByEchipa(echipa);
 
         if(result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

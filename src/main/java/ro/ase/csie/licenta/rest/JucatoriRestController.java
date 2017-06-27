@@ -36,7 +36,7 @@ public class JucatoriRestController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ResponseEntity<Void> addEmployee(@RequestBody Jucator jucator, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<Void> addJucatori(@RequestBody Jucator jucator, UriComponentsBuilder ucBuilder) {
 
         repository.save(jucator);
 
@@ -50,7 +50,7 @@ public class JucatoriRestController {
     public ResponseEntity<Jucator> getJucatorById(@PathVariable("id") long id) {
         Jucator result = repository.findOne(id);
 
-        if(result == null) {
+        if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
@@ -61,7 +61,7 @@ public class JucatoriRestController {
     public ResponseEntity<List<Jucator>> getJucatorByName(@PathVariable("name") String name) {
         List<Jucator> result = repository.findByNume(name);
 
-        if(result == null) {
+        if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
@@ -72,7 +72,7 @@ public class JucatoriRestController {
     public ResponseEntity<Jucator> deleteJucator(@PathVariable("id") long id) {
         Jucator result = repository.findOne(id);
 
-        if(result == null) {
+        if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
@@ -98,13 +98,13 @@ public class JucatoriRestController {
     public ResponseEntity<List<Jucator>> getJucatoriByEchipa(@PathVariable("id") long id) {
         Echipa echipa = echipaRepository.findOne(id);
 
-        if(echipa == null) {
+        if (echipa == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         List<Jucator> result = (List<Jucator>) repository.findByEchipa(echipa);
 
-        if(result == null) {
+        if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 

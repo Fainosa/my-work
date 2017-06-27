@@ -51,7 +51,7 @@ public class MeciRestController {
     public ResponseEntity<Meci> getMeciById(@PathVariable("id") long id) {
         Meci result = repository.findOne(id);
 
-        if(result == null) {
+        if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
@@ -63,7 +63,7 @@ public class MeciRestController {
     public ResponseEntity<Jucator> deleteMeci(@PathVariable("id") long id) {
         Meci result = repository.findOne(id);
 
-        if(result == null) {
+        if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
@@ -89,13 +89,13 @@ public class MeciRestController {
     public ResponseEntity<List<Meci>> getMeciuriByCompetitie(@PathVariable("id") long id) {
         Competitie competitie = competitieRepository.findOne(id);
 
-        if(competitie == null) {
+        if (competitie == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         List<Meci> result = (List<Meci>) repository.findByCompetitie(competitie);
 
-        if(result == null) {
+        if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 

@@ -6,27 +6,27 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-import ro.ase.csie.licenta.domain.Meci;
-import ro.ase.csie.licenta.domain.Tabela1P;
-import ro.ase.csie.licenta.repository.MeciRepository;
-import ro.ase.csie.licenta.repository.Tabela1PRepository;
+import ro.ase.csie.licenta.domain.Echipa;
+import ro.ase.csie.licenta.domain.Infrangeri;
+import ro.ase.csie.licenta.repository.EchipaRepository;
+import ro.ase.csie.licenta.repository.InfrangeriRepository;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/tabela1p")
-public class Tabela1PRestController {
+@RequestMapping(value = "/infrangeri")
+public class InfrangeriRestController {
 
 
     @Autowired
-    private Tabela1PRepository repository;
+    private InfrangeriRepository repository;
 
     @Autowired
-    private MeciRepository meciRepository;
+    private EchipaRepository echipaRepository;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public ResponseEntity<List<Tabela1P>> getAllTabela1P() {
-        List<Tabela1P> result = repository.findAll();
+    public ResponseEntity<List<Infrangeri>> getInfrangeri() {
+        List<Infrangeri> result = repository.findAll();
 
         if (result.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -37,19 +37,19 @@ public class Tabela1PRestController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ResponseEntity<Void> addTabela1P(@RequestBody Tabela1P tabela1P, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<Void> addInfrangeri(@RequestBody Infrangeri infrangeri, UriComponentsBuilder ucBuilder) {
 
-        repository.save(tabela1P);
+        repository.save(infrangeri);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("tabela1p/{id}").buildAndExpand(tabela1P.getId()).toUri());
+        headers.setLocation(ucBuilder.path("infrangeri/{id}").buildAndExpand(infrangeri.getId()).toUri());
 
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
-    public ResponseEntity<Tabela1P> getTabela1pById(@PathVariable("id") long id) {
-        Tabela1P result = repository.findOne(id);
+    public ResponseEntity<Infrangeri> getInfrangeriById(@PathVariable("id") long id) {
+        Infrangeri result = repository.findOne(id);
 
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -60,8 +60,8 @@ public class Tabela1PRestController {
 
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Tabela1P> deleteTabela1P(@PathVariable("id") long id) {
-        Tabela1P result = repository.findOne(id);
+    public ResponseEntity<Infrangeri> deleteInfrangeri(@PathVariable("id") long id) {
+        Infrangeri result = repository.findOne(id);
 
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -73,27 +73,27 @@ public class Tabela1PRestController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public ResponseEntity<Tabela1P> updateTabela1P(@RequestBody Tabela1P tabela1P) {
-        Tabela1P result = repository.findOne(tabela1P.getId());
+    public ResponseEntity<Infrangeri> updateInfrangeri(@RequestBody Infrangeri infrangeri) {
+        Infrangeri result = repository.findOne(infrangeri.getId());
 
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        repository.save(tabela1P);
+        repository.save(infrangeri);
 
-        return new ResponseEntity<>(tabela1P, HttpStatus.OK);
+        return new ResponseEntity<>(infrangeri, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/meci/{id}", method = RequestMethod.GET)
-    public ResponseEntity<List<Tabela1P>> getTabela1pByMeci(@PathVariable("id") long id) {
-        Meci meci = meciRepository.findOne(id);
+    @RequestMapping(value = "/echipa/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Infrangeri>> getInfrangeriByEchipa(@PathVariable("id") long id) {
+        Echipa echipa = echipaRepository.findOne(id);
 
-        if (meci == null) {
+        if (echipa == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        List<Tabela1P> result = (List<Tabela1P>) repository.findByMeci(meci);
+        List<Infrangeri> result = (List<Infrangeri>) repository.findByEchipa(echipa);
 
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

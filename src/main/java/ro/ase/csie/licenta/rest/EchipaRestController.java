@@ -50,7 +50,7 @@ public class EchipaRestController {
     public ResponseEntity<Echipa> getEchipaById(@PathVariable("id") long id) {
         Echipa result = repository.findOne(id);
 
-        if(result == null) {
+        if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
@@ -62,7 +62,7 @@ public class EchipaRestController {
     public ResponseEntity<Echipa> deleteEchipa(@PathVariable("id") long id) {
         Echipa result = repository.findOne(id);
 
-        if(result == null) {
+        if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
@@ -88,13 +88,13 @@ public class EchipaRestController {
     public ResponseEntity<List<Echipa>> getEchipeByMeci(@PathVariable("id") long id) {
         Meci meci = meciRepository.findOne(id);
 
-        if(meci == null) {
+        if (meci == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         List<Echipa> result = (List<Echipa>) repository.findByMeci(meci);
 
-        if(result == null) {
+        if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 

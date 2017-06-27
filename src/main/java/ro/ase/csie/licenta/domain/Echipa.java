@@ -1,12 +1,13 @@
 package ro.ase.csie.licenta.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "echipa")
-
 public class Echipa {
 
     @Id
@@ -28,11 +29,17 @@ public class Echipa {
     @JoinColumn(name="id_meci")
     private Meci meci;
 
+    @OneToMany(mappedBy = "echipa")
+    private List<Infrangeri> infrangeri;
+
+    @OneToMany(mappedBy = "echipa")
+    private List<Victorii> victorii;
+
     public Echipa() {
 
     }
 
-    public Echipa(String numeEchipa, String locatie, Date dataInfiintare, List<Jucator> jucatori, List<Antrenor> antrenori, Meci meci) {
+    public Echipa(String numeEchipa, String locatie, Date dataInfiintare, int victorii, int infrangeri, List<Jucator> jucatori, List<Antrenor> antrenori, Meci meci) {
         this.numeEchipa = numeEchipa;
         this.locatie = locatie;
         this.dataInfiintare = dataInfiintare;
@@ -89,6 +96,27 @@ public class Echipa {
         this.antrenori = antrenori;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Infrangeri> getInfrangeri() {
+        return infrangeri;
+    }
+
+    public void setInfrangeri(List<Infrangeri> infrangeri) {
+        this.infrangeri = infrangeri;
+    }
+
+    public List<Victorii> getVictorii() {
+        return victorii;
+    }
+
+    public void setVictorii(List<Victorii> victorii) {
+        this.victorii = victorii;
+    }
+
+    @JsonIgnore
     public Meci getMeci() {
         return meci;
     }

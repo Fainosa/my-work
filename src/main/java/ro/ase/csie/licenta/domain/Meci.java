@@ -1,5 +1,8 @@
 package ro.ase.csie.licenta.domain;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -18,28 +21,21 @@ public class Meci {
     private Date data;
 
     @OneToMany(mappedBy = "meci")
-    private List<Tabela1P> tabela1P;
-
-    @OneToMany(mappedBy = "meci")
-    private List<Tabela2P> tabela2P;
-
-    @OneToMany(mappedBy = "meci")
     private List<Echipa> echipe;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="id_competitie")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_competitie")
     private Competitie competitie;
 
-    public Meci(){
+    public Meci() {
 
     }
 
-    public Meci(String echipaGazda, String echipaOaspete, Date data, List<Tabela1P> tabela1P, List<Tabela2P> tabela2P, List<Echipa> echipe, Competitie competitie) {
+    public Meci(String echipaGazda, String echipaOaspete, Date data, List<Echipa> echipe, Competitie competitie) {
+        this.id = id;
         this.echipaGazda = echipaGazda;
         this.echipaOaspete = echipaOaspete;
         this.data = data;
-        this.tabela1P = tabela1P;
-        this.tabela2P = tabela2P;
         this.echipe = echipe;
         this.competitie = competitie;
     }
@@ -76,22 +72,6 @@ public class Meci {
         this.data = data;
     }
 
-    public List<Tabela1P> getTabela1P() {
-        return tabela1P;
-    }
-
-    public void setTabela1P(List<Tabela1P> tabela1P) {
-        this.tabela1P = tabela1P;
-    }
-
-    public List<Tabela2P> getTabela2P() {
-        return tabela2P;
-    }
-
-    public void setTabela2P(List<Tabela2P> tabela2P) {
-        this.tabela2P = tabela2P;
-    }
-
     public List<Echipa> getEchipe() {
         return echipe;
     }
@@ -100,6 +80,19 @@ public class Meci {
         this.echipe = echipe;
     }
 
+    @Override
+    public String toString() {
+        return "Meci{" +
+                "id=" + id +
+                ", echipaGazda='" + echipaGazda + '\'' +
+                ", echipaOaspete='" + echipaOaspete + '\'' +
+                ", data=" + data +
+                ", echipe=" + echipe +
+                ", competitie=" + competitie +
+                '}';
+    }
+
+    @JsonIgnore
     public Competitie getCompetitie() {
         return competitie;
     }

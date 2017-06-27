@@ -1,5 +1,7 @@
 package ro.ase.csie.licenta.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -103,6 +105,7 @@ public class Jucator {
         this.numarJucator = numarJucator;
     }
 
+    @JsonIgnore
     public Echipa getEchipa() {
         return echipa;
     }

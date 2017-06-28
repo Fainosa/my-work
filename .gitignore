@@ -35,5 +35,5 @@ buildNumber.properties
 !vendor.json
 
 #application.properties
-**/src/main/resources/
+**/src/main/resources/application.properties
 application.properties

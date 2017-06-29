@@ -39,13 +39,15 @@ public class Echipa {
 
     }
 
-    public Echipa(String numeEchipa, String locatie, Date dataInfiintare, int victorii, int infrangeri, List<Jucator> jucatori, List<Antrenor> antrenori, Meci meci) {
+    public Echipa( String numeEchipa, String locatie, Date dataInfiintare, List<Jucator> jucatori, List<Antrenor> antrenori, Meci meci, List<Infrangeri> infrangeri, List<Victorii> victorii ) {
         this.numeEchipa = numeEchipa;
         this.locatie = locatie;
         this.dataInfiintare = dataInfiintare;
         this.jucatori = jucatori;
         this.antrenori = antrenori;
         this.meci = meci;
+        this.infrangeri = infrangeri;
+        this.victorii = victorii;
     }
 
     public long getId() {

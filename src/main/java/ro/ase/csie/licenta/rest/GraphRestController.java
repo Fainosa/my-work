@@ -13,7 +13,7 @@ import ro.ase.csie.licenta.repository.VictoriiRepository;
 
 import java.util.List;
 
-@RequestMapping(value = "/graph-echipa")
+@RequestMapping(value = "/graph")
 @RestController
 public class GraphRestController {
 
@@ -26,7 +26,7 @@ public class GraphRestController {
     @Autowired
     InfrangeriRepository infrangeriRepository;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/clasament-echipe", method = RequestMethod.GET)
     private String getSkillStatistics() {
         String result = " [ ";
 
@@ -35,13 +35,12 @@ public class GraphRestController {
         Victorii victorii;
 
         for (Echipa echipa : echipe) {
-            result = result + " {\"\" : " + " \" " + echipa.getNumeEchipa() + " \"" + " , \"data\" : [ ";
-
             infrangeri = infrangeriRepository.findByEchipa(echipa).get(0);
             victorii = victoriiRepository.findByEchipa(echipa).get(0);
 
-            result = result + " { \"x\" : " + " \"" + echipa.getNumeEchipa() + "\" , " + " \"y\" : "
-                    + 2 * victorii.getNumarVictorii() + infrangeri.getNumarInfrangeri() + " } , ";
+            int punctaj = 2 * victorii.getNumarVictorii() + infrangeri.getNumarInfrangeri();
+
+            result = result + " { \"x\":" + "\"" + echipa.getNumeEchipa() + "\"" + " , \"y\": " + punctaj + " } , ";
 
         }
 

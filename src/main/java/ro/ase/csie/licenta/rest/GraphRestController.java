@@ -28,7 +28,7 @@ public class GraphRestController {
 
     @RequestMapping(value = "/clasament-echipe", method = RequestMethod.GET)
     private String getSkillStatistics() {
-        String result = " [ ";
+        String result = "";
 
         List<Echipa> echipe = echipaRepository.findAll();
         Infrangeri infrangeri;
@@ -40,12 +40,16 @@ public class GraphRestController {
 
             int punctaj = 2 * victorii.getNumarVictorii() + infrangeri.getNumarInfrangeri();
 
-            result = result + " { \"x\":" + "\"" + echipa.getNumeEchipa() + "\"" + " , \"y\": " + punctaj + " } , ";
+//            result = result + " { \"x\":" + "\"" + echipa.getNumeEchipa() + "\"" + " , \"y\": " + punctaj + " } , ";
+
+            result = result + " {x: " + "\'" + echipa.getNumeEchipa() + "\'" + ", y: " + punctaj + "}, ";
+
+//            result = result + " { \"" + echipa.getNumeEchipa() + "\"" + " : " + punctaj + " } , ";
 
         }
 
         result = result.substring(0, result.length() - 4);
-        result = result + " } ]";
+        result = result + " }";
 
         return result;
     }

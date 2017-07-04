@@ -1,23 +1,40 @@
-// Easy way to wait for all videos to load before start playing
+var dataUrl = "http://localhost:8088/user/all";
+var users;
 
-var promises = [];
-function makePromise(i, video) {
-  promises[i] = new $.Deferred();
-  // This event tells us video can be played all the way through, without stopping or buffering
-  video.oncanplaythrough = function() {
-    // Resolve the promise
-    promises[i].resolve();
-  }
-}
-// Pause all videos and create the promise array
-$('video').each(function(index){
-  this.pause();
-  makePromise(index, this);
-})
+$(document).ready(function() {
+    getData(dataUrl);
+    console.log(users[0])
 
-// Wait for all promises to resolve then start playing
-$.when.apply(null, promises).done(function () {
-  $('video').each(function(){
-    this.play();
-  });
 });
+
+$("#btn_login" ).click(function() {
+    var username = $('#input_user').val();
+    var password = $('#input_password').val();
+
+    $.each(users, function(i, item) {
+        if(username === item.userName) {
+            if (password === item.password) {
+                alert("success")
+            } else {
+                alert("not success")
+            }
+        } else {
+            alert("not a valid user")
+        }
+    });
+});
+
+function getData(api) {
+    $.ajax({
+        url : api,
+        type : 'GET',
+        dataType : 'json',
+        async : false,
+        success : function(data) {
+            users = data;
+        },
+        error : function(xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}

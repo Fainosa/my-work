@@ -4,7 +4,6 @@ $(document).ready(function() {
     $("body").append('<div id="graph"></div>');
 
     getData(dataUrl);
-
 });
 
 function drawLine(data) {

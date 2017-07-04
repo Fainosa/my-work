@@ -3,8 +3,6 @@ var users;
 
 $(document).ready(function() {
     getData(dataUrl);
-    console.log(users[0])
-
 });
 
 $("#btn_login" ).click(function() {

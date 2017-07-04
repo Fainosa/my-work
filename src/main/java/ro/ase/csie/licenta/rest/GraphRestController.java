@@ -31,6 +31,10 @@ public class GraphRestController {
         String result = "[";
 
         List<Echipa> echipe = echipaRepository.findAll();
+        if(echipe.isEmpty()) {
+            return result + " ]";
+        }
+
         Infrangeri infrangeri;
         Victorii victorii;
 
@@ -40,9 +44,7 @@ public class GraphRestController {
 
             int punctaj = 2 * victorii.getNumarVictorii() + infrangeri.getNumarInfrangeri();
 
-//            result = result + "{x: " + "\'" + echipa.getNumeEchipa() + "\'" + ", y: " + punctaj + "};";
             result = result + "{ \"x\": " + "\"" + echipa.getNumeEchipa() + "\"" + ", \"y\": " + punctaj + "},";
-
 
         }
 

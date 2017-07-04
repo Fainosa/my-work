@@ -14,12 +14,16 @@ $("#btn_login" ).click(function() {
     $.each(users, function(i, item) {
         if(username === item.userName) {
             if (password === item.password) {
-                alert("success")
+                alert("Hello, " + item.userName + " ! You are now logged into the application");
+                window.open("clasamentEchipe.html");
             } else {
-                alert("not success")
+                alert("Hello, " + item.userName + " ! Your password is incorrect! Please try again");
+                $('#input_password').val("");
             }
         } else {
-            alert("not a valid user")
+            alert("Username: " + username + " is not recognised in the application");
+            $('#input_password').val("");
+            $('#input_user').val("");
         }
     });
 });
@@ -38,3 +42,9 @@ function getData(api) {
         }
     });
 }
+
+$("#input_password").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#btn_login").click();
+    }
+});

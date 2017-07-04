@@ -1,4 +1,4 @@
-package ro.ase.csie.licenta.graph;
+package ro.ase.csie.licenta.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -9,7 +9,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/teamsGraph").setViewName("teamsGraph");
+		registry.addViewController("/").setViewName("forward:/login.html");
 	}
 
 }

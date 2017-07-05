@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width">
+		<link href="css/style.css" type="text/css" rel="stylesheet"/>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script  type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script  type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+		<script src="js/main.js"></script>
+    </head>
+
+    <body>
+		<header>
+			<div class="fixedElement">
+				<p id="dates">URMATOAREA COMPETITIE</p>
+				<p id="dates">20.07.2017 - 23.07.2017</p>
+				<div class="competition">
+					<div class="team1">
+						<img src="images/e1.png"/>
+					</div>
+					<span id="vs"> VS </span>
+					<div class="team2">
+						<img src="images/e2.png"/>
+					</div>
+				</div>
+			</div>
+			<ul id="menu">
+				<li><a href="#">Acasa</a></li>
+				<li><a href="#">Jucatori</a></li>
+				<li><a href="#">Echipe</a></li>
+				<li><a href="#">Competitii</a></li>
+				<li><a href="#">Antrenori</a></li>
+				<li><a href="#">Galerie</a></li>
+				<li>
+					<a href="#">Stiri</a>
+					<ul>
+						<li><a href="#">CSS</a></li>
+						<li><a href="#">Graphic design</a></li>
+						<li><a href="#">Development tools</a></li>
+						<li><a href="#">Web design</a></li>
+					</ul>
+				</li>				
+			</ul>
+		</header>
+		<div id="editCompetition" class="container ">
+			<div class="row stopComp">
+				<button class="button button1">STOP COMPETITION</button>
+			</div>
+			<div class="row">
+				<div class="col-md-4 colons">
+					<img src="images/e3.png" class="images"/>
+					<p class="punctaj"> <span class="label">Punctaj curent</span> 54 </p>
+					<div class="editPoints">
+					<span> 4 </span>
+					<i class="glyphicon glyphicon-plus" style="font-size:24px;"></i>
+					</div>
+				</div>
+				<div class="col-md-4">
+				<p id="versus"> VS </p>
+				<p id="cosuriMarcate"> Cosuri marcate </p>
+				</div>
+				<div class="col-md-4 colons">
+					<img src="images/e4.png" class="images"/>
+					<p class="punctaj"> <span class="label">Punctaj curent</span> 68 </p>
+					<div class="editPoints">
+						<span> 5 </span>
+						<i class="glyphicon glyphicon-plus" style="font-size:24px;"></i>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div id="countdown">
+					Competitia va lua sfarsit in: <span id="timer"></span>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>

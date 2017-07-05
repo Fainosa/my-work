@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width">
+		<link href="css/style.css" type="text/css" rel="stylesheet"/>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script  type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script  type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+		<script src="js/main.js"></script>
+    </head>
+
+    <body>
+		<header>
+			<div class="fixedElement">
+				<p id="dates">URMATOAREA COMPETITIE</p>
+				<p id="dates">20.07.2017 - 23.07.2017</p>
+				<div class="competition">
+					<div class="team1">
+						<img src="images/e1.png"/>
+					</div>
+					<span id="vs"> VS </span>
+					<div class="team2">
+						<img src="images/e2.png"/>
+					</div>
+				</div>
+			</div>
+			<ul id="menu">
+				<li><a href="#">Acasa</a></li>
+				<li><a href="#">Jucatori</a></li>
+				<li><a href="#">Echipe</a></li>
+				<li><a href="#">Competitii</a></li>
+				<li><a href="#">Antrenori</a></li>
+				<li><a href="#">Galerie</a></li>
+				<li>
+					<a href="#">Stiri</a>
+					<ul>
+						<li><a href="#">CSS</a></li>
+						<li><a href="#">Graphic design</a></li>
+						<li><a href="#">Development tools</a></li>
+						<li><a href="#">Web design</a></li>
+					</ul>
+				</li>				
+			</ul>
+		</header>
+		<div class="container content">
+			<div class="row">
+				<div class="col-md-8 leftColumn">
+				 <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Loc</th>
+                <th>Nume</th>
+                <th>Cosuri marcate</th>
+                <th>Cosuri primite</th>
+                <th>Victorii</th>
+                <th>Infrangeri</th>
+				<th>Punctaj</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Loc</th>
+                <th>Nume</th>
+                <th>Cosuri marcate</th>
+                <th>Cosuri primite</th>
+                <th>Victorii</th>
+                <th>Infrangeri</th>
+				<th>Punctaj</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Boston Celtics</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Brooklyn Nets</td>
+                <td>15</td>
+                <td>18</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>New York Knicks</td>
+                <td>9</td>
+                <td>8</td>
+                <td>7</td>
+				<td>9</td>
+                <td>68</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Chicago Bulls</td>
+                <td>17</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>85</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Cleveland Cavaliers</td>
+                <td>15</td>
+                <td>9</td>
+                <td>8</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Charlotte Hornets</td>
+                <td>15</td>
+                <td>8</td>
+                <td>7</td>
+				<td>4</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Miami Heat</td>
+                <td>5</td>
+                <td>8</td>
+                <td>4</td>
+				<td>9</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Orlando Magic</td>
+                <td>15</td>
+                <td>18</td>
+                <td>7</td>
+				<td>7</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>Washington Wizards</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>Denver Nuggets</td>
+                <td>12</td>
+                <td>7</td>
+                <td>7</td>
+				<td>2</td>
+                <td>85</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>22</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>26</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>27</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>28</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>29</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+            <tr>
+                <td>30</td>
+                <td>BC Farul Constanta</td>
+                <td>5</td>
+                <td>8</td>
+                <td>7</td>
+				<td>2</td>
+                <td>25</td>
+            </tr>
+        </tbody>
+    </table>
+				</div>
+				<div class="col-md-4 rightColumn">
+					<h3>Competitii</h3>
+					<input id="competitions" type="date" name="competitions">
+					<ul id="list">
+						<li>Portland Trail Blazers <span>VS</span> Minnesota Timberwolves</li>
+						<li>Denver Nuggets <span>VS</span> Oklahoma City Thunder</li>
+						<li>Utah Jazz <span>VS</span> LA Clippers</li>
+						<li>Miami Heat <span>VS</span> Phoenix Suns</li>
+						<li>Boston Celtics <span>VS</span> Brooklyn Nets</li>
+						<li>Phoenix Suns <span>VS</span> Charlotte Hornets</li>
+						<li>Oklahoma City Thunder <span>VS</span> Utah Jazz</li>
+						<li>Chicago Bulls <span>VS</span> Toronto Raptors</li>
+						<li>Brooklyn Nets <span>VS</span> Charlotte Hornets</li>
+						<li>LA Clippers <span>VS</span> Miami Heat</li>
+						<li>Toronto Raptors <span>VS</span> Boston Celtics</li>
+						<li>Utah Jazz <span>VS</span> Oklahoma City Thunder</li>
+						<li>Chicago Bulls <span>VS</span> Golden State Warriors</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>

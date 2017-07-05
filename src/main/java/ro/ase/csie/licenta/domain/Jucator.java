@@ -27,12 +27,14 @@ public class Jucator {
     @JoinColumn(name = "id_echipa")
     private Echipa echipa;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private User user;
+
     public Jucator() {
 
     }
 
-    public Jucator(String nume, String prenume, float inaltime, float greutate, Date dataNasterii, String eMail, int numarJucator, String parola, Echipa echipa) {
-        this.id = id;
+    public Jucator(String nume, String prenume, float inaltime, float greutate, Date dataNasterii, String eMail, int numarJucator, String parola, Echipa echipa, User user) {
         this.nume = nume;
         this.prenume = prenume;
         this.inaltime = inaltime;
@@ -42,6 +44,7 @@ public class Jucator {
         this.numarJucator = numarJucator;
         this.parola = parola;
         this.echipa = echipa;
+        this.user = user;
     }
 
     public long getId() {
@@ -114,6 +117,14 @@ public class Jucator {
 
     public void setParola(String parola) {
         this.parola = parola;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @JsonIgnore

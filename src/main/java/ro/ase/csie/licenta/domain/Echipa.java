@@ -18,6 +18,8 @@ public class Echipa {
     private String numeEchipa;
     private String locatie;
     private Date dataInfiintare;
+    private int cosuriMarcate;
+    private int cosuriPrimite;
 
     @OneToMany(mappedBy = "echipa")
     private List<Jucator> jucatori;
@@ -39,10 +41,12 @@ public class Echipa {
 
     }
 
-    public Echipa( String numeEchipa, String locatie, Date dataInfiintare, List<Jucator> jucatori, List<Antrenor> antrenori, Meci meci, List<Infrangeri> infrangeri, List<Victorii> victorii ) {
+    public Echipa(String numeEchipa, String locatie, Date dataInfiintare, int cosuriMarcate, int cosuriPrimite, List<Jucator> jucatori, List<Antrenor> antrenori, Meci meci, List<Infrangeri> infrangeri, List<Victorii> victorii) {
         this.numeEchipa = numeEchipa;
         this.locatie = locatie;
         this.dataInfiintare = dataInfiintare;
+        this.cosuriMarcate = cosuriMarcate;
+        this.cosuriPrimite = cosuriPrimite;
         this.jucatori = jucatori;
         this.antrenori = antrenori;
         this.meci = meci;
@@ -116,6 +120,22 @@ public class Echipa {
 
     public void setVictorii(List<Victorii> victorii) {
         this.victorii = victorii;
+    }
+
+    public int getCosuriMarcate() {
+        return cosuriMarcate;
+    }
+
+    public void setCosuriMarcate(int cosuriMarcate) {
+        this.cosuriMarcate = cosuriMarcate;
+    }
+
+    public int getCosuriPrimite() {
+        return cosuriPrimite;
+    }
+
+    public void setCosuriPrimite(int cosuriPrimite) {
+        this.cosuriPrimite = cosuriPrimite;
     }
 
     @JsonIgnore

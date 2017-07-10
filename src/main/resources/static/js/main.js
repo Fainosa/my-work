@@ -4,15 +4,12 @@ var myTableObject;
 $(document).ready(function() {
     getData(echipeUrl);
 
-    $('#example').DataTable();
 } );
 
 function processDataForTable(data) {
     myTableObject = Object.assign({}, data);
 
-
     $.each(data, function(i, item) {
-        console.log('data' , Number(data[i].infrangeri[0].numarInfrangeri));
         myTableObject[i].punctaj = 2 * Number(data[i].victorii[0].numarVictorii) + Number(data[i].infrangeri[0].numarInfrangeri);
     });
 
@@ -24,29 +21,20 @@ function processDataForTable(data) {
         return parseInt(b.punctaj) - parseInt(a.punctaj);
     });
 
-    $.each(myTableObject, function(i, item) {
-        $('#example').append('<tr class="child">');
-        $('#example').append('<td> ++i </td>');
-        $('#example').append('<tr class="child"><td> item[i].numeEchipa</td></tr>');
-        $('#example').append('<tr class="child"><td> item[i].cosuriMarcate</td></tr>');
-        $('#example').append('<tr class="child"><td> item[i].cosuriPrimite</td></tr>');
-        $('#example').append('<tr class="child"><td> item[i].victorii[0].numarVictorii</td></tr>');
-        $('#example').append('<tr class="child"><td> item[i].infrangeri[0].numarInfrangeri</td></tr>');
-        $('#example').append('<tr class="child"><td> item[i].punctaj</td></tr>');
-        $('#example').append('</tr');
-    });
+    $('#example').DataTable();
 
-
-    console.log(myTableObjectArray)
+    $.each(myTableObjectArray, function(i, item) {
+        $('#example tr:last').after('<tr><td>' + ++i + '</td>' +
+            '<td>' + item.numeEchipa + '</td>' +
+            '<td>' + item.cosuriMarcate + '</td>' +
+            '<td>' + item.cosuriPrimite + '</td>' +
+            '<td>' + item.victorii[0].numarVictorii + '</td>' +
+            '<td>' + item.infrangeri[0].numarInfrangeri + '</td>' +
+            '<td>' + item.punctaj + '</td>' +
+        '</tr>')
+      }).css('background-color', 'white');
 
 }
-
-function highest(data){
-    return [].slice.call(arguments).sort(function(a,b){
-        return b - a;
-    });
-}
-
 
 function getData(api) {
     $.ajax({

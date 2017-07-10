@@ -98,6 +98,10 @@ table td {
 	color: white!important;
 }
 
+th {
+    color: white!important;
+}
+
 .current{
 	color: black!important;
 }

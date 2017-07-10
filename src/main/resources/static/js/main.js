@@ -1,6 +1,67 @@
-$(document).ready(function() {
+var echipeUrl = 'http://localhost:8088/echipa/all';
+var myTableObject;
 
-});
+$(document).ready(function() {
+    getData(echipeUrl);
+
+    $('#example').DataTable();
+} );
+
+function processDataForTable(data) {
+    myTableObject = Object.assign({}, data);
+
+
+    $.each(data, function(i, item) {
+        console.log('data' , Number(data[i].infrangeri[0].numarInfrangeri));
+        myTableObject[i].punctaj = 2 * Number(data[i].victorii[0].numarVictorii) + Number(data[i].infrangeri[0].numarInfrangeri);
+    });
+
+    var myTableObjectArray = $.map(myTableObject, function(value, index) {
+        return [value];
+    });
+
+    myTableObjectArray.sort(function(a, b) {
+        return parseInt(b.punctaj) - parseInt(a.punctaj);
+    });
+
+    $.each(myTableObject, function(i, item) {
+        $('#example').append('<tr class="child">');
+        $('#example').append('<td> ++i </td>');
+        $('#example').append('<tr class="child"><td> item[i].numeEchipa</td></tr>');
+        $('#example').append('<tr class="child"><td> item[i].cosuriMarcate</td></tr>');
+        $('#example').append('<tr class="child"><td> item[i].cosuriPrimite</td></tr>');
+        $('#example').append('<tr class="child"><td> item[i].victorii[0].numarVictorii</td></tr>');
+        $('#example').append('<tr class="child"><td> item[i].infrangeri[0].numarInfrangeri</td></tr>');
+        $('#example').append('<tr class="child"><td> item[i].punctaj</td></tr>');
+        $('#example').append('</tr');
+    });
+
+
+    console.log(myTableObjectArray)
+
+}
+
+function highest(data){
+    return [].slice.call(arguments).sort(function(a,b){
+        return b - a;
+    });
+}
+
+
+function getData(api) {
+    $.ajax({
+        url : api,
+        type : 'GET',
+        dataType : 'json',
+        async : false,
+        success : function(data) {
+           processDataForTable(data);
+        },
+        error : function(xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
 
 
 $(function() {
@@ -12,7 +73,7 @@ $(function() {
         $(this).children('ul').css('visibility','hidden');
         })
   }
-}); 
+});
 
 /* Mobile */
 $('#menu-wrap').prepend('<div id="menu-trigger">Menu</div>');       
@@ -36,38 +97,6 @@ $(window).scroll(function(e){
   } 
 });
 
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
-
-// Set the date we're counting down to
-var countDownDate = new Date("Jul 5, 2017 15:37:25").getTime();
-
-// Update the count down every 1 second
-var x = setInterval(function() {
-
-    // Get todays date and time
-    var now = new Date().getTime();
-    
-    // Find the distance between now an the count down date
-    var distance = countDownDate - now;
-    
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-    // Output the result in an element with id="demo"
-    document.getElementById("timer").innerHTML = days + "z " + hours + "o "
-    + minutes + "m " + seconds + "s ";
-    
-    // If the count down is over, write some text 
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("timer").innerHTML = "EXPIRED";
-    }
-}, 1000);
 
 
 

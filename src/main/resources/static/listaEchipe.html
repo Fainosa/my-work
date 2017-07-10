@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width">
+        <link href="css/style.css" type="text/css" rel="stylesheet"/>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script  type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script  type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <script src="main1.js"></script>
+    </head>
+
+    <body style="background-image: url(background.jpg)">
+        <header>
+            <ul id="menu">
+                <li><a href="#">Acasa</a></li>
+                <li><a href="#">Jucatori</a></li>
+                <li><a href="#">Echipe</a></li>
+                <li><a href="#">Competitii</a></li>
+                <li><a href="#">Antrenori</a></li>
+                <li><a href="#">Galerie</a></li>
+                <li>
+                    <a href="#">Stiri</a>
+                    <ul>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">Graphic design</a></li>
+                        <li><a href="#">Development tools</a></li>
+                        <li><a href="#">Web design</a></li>
+                    </ul>
+                </li>               
+            </ul>
+        </header>
+        <div class="listaEchipe">
+                 <table id="example" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Nume echipa</th>
+                <th>Locatie</th>
+                <th>Data infiintarii</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Nume echipa</th>
+                <th>Locatie</th>
+                <th>Data infiintarii</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>Boston Celtics</td>
+                <td>Boston</td>
+                <td>10.05.1990</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2 id="numeEchipa"></h2>
+    </div>
+    <div class="modal-body" id="modalContent">
+        <ul id="listaJucatori">
+        </ul>
+    </div>
+  </div>
+
+</div>
+    </div>
+    </body>
+</html>

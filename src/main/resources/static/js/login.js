@@ -13,7 +13,7 @@ $("#btn_login" ).click(function() {
         if(username === item.userName) {
             if (password === item.password) {
                 alert("Hello, " + item.userName + " ! You are now logged into the application");
-                window.open("clasamentEchipe.html");
+                window.open("main.html");
             } else {
                 alert("Hello, " + item.userName + " ! Your password is incorrect! Please try again");
                 $('#input_password').val("");

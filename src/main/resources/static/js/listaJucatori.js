@@ -19,32 +19,25 @@ $(document).ready(function() {
     }
   }
 
-  var jucatori = [{
-      'nume':'Ceva',
-      'prenume':'Ceva1',
-    },
-    {
-      'nume':'Ceva',
-      'prenume':'Ceva1',
-    },
-    {
-      'nume':'Ceva',
-      'prenume':'Ceva1',
+  var jucator = [{
+      'echipa':'ASDFGHJ',
+
     }];
 
   $('#example tbody').on('click', 'tr', function () {
     var listaJucatori = document.getElementById("listaJucatori");
     listaJucatori.innerHTML = '';
     var data = table.row( this ).data();
-    var header = document.getElementById("numeEchipa");
-    header.innerHTML = data[0];
+    var header = document.getElementById("numeJucator");
+    header.innerHTML = data[0] + " " + data[1];
 
-    for (var i =0; i<jucatori.length; i++) {
-      listaJucatori.innerHTML += "<li>" + jucatori[i].nume + "</li>";
+    for (var i =0; i<jucator.length; i++) {
+      listaJucatori.innerHTML += "<li>" + jucator[i].echipa + "</li>";
     }
     modal.style.display = "block";
   } );
 } );
+
 
 $(function() {
   if ($.browser.msie && $.browser.version.substr(0,1)<7)
@@ -78,7 +71,4 @@ $(window).scroll(function(e){
     $('.fixedElement').css({'position': 'static', 'top': '0px'});
   }
 });
-
-
-
 

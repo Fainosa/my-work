@@ -2,6 +2,7 @@ package ro.ase.csie.licenta.domain.utils;
 
 public class CustomEchipa {
 
+    int loc;
    String nume;
    int cosuriMarcate;
    int cosuriPrimite;
@@ -9,7 +10,8 @@ public class CustomEchipa {
    int infrangeri;
    int punctaj;
 
-    public CustomEchipa( String nume, int cosuriMarcate, int cosuriPrimite, int victorii, int infrangeri, int punctaj ) {
+    public CustomEchipa( int loc, String nume, int cosuriMarcate, int cosuriPrimite, int victorii, int infrangeri, int punctaj ) {
+        this.loc = loc;
         this.nume = nume;
         this.cosuriMarcate = cosuriMarcate;
         this.cosuriPrimite = cosuriPrimite;
@@ -18,8 +20,26 @@ public class CustomEchipa {
         this.punctaj = punctaj;
     }
 
+    public CustomEchipa(String nume, int cosuriMarcate, int cosuriPrimite, int victorii, int infrangeri, int punctaj ) {
+        this.nume = nume;
+        this.cosuriMarcate = cosuriMarcate;
+        this.cosuriPrimite = cosuriPrimite;
+        this.victorii = victorii;
+        this.infrangeri = infrangeri;
+        this.punctaj = punctaj;
+    }
+
+
     public CustomEchipa() {
 
+    }
+
+    public int getLoc() {
+        return loc;
+    }
+
+    public void setLoc( int loc ) {
+        this.loc = loc;
     }
 
     public String getNume() {

@@ -43,6 +43,10 @@ public class CustomObjectsRestController {
         Collections.sort(result, (s1, s2) ->
                 Integer.compare(s2.getPunctaj(), s1.getPunctaj()));
 
+        for(int i = 0; i < result.size(); i++) {
+            result.get(i).setLoc(i + 1);
+        }
+
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 

@@ -92,7 +92,7 @@ public class EchipaRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        List<Echipa> result = (List<Echipa>) repository.findByMeci(meci);
+        List<Echipa> result = repository.findByMeci(meci);
 
         if (result == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

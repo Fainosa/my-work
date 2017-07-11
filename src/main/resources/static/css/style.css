@@ -456,7 +456,7 @@ th {
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: rgba(152, 63, 0, 0.99);
     color: white;
 }
 

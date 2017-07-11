@@ -15,7 +15,6 @@ $(document).ready(function() {
             { "data": "infrangeri" },
             { "data": "punctaj" }
         ]
-
     });
 
 } );

@@ -2,7 +2,7 @@ package ro.ase.csie.licenta.domain.utils;
 
 public class CustomEchipa {
 
-    int loc;
+   int loc;
    String nume;
    int cosuriMarcate;
    int cosuriPrimite;
@@ -29,10 +29,6 @@ public class CustomEchipa {
         this.punctaj = punctaj;
     }
 
-
-    public CustomEchipa() {
-
-    }
 
     public int getLoc() {
         return loc;

@@ -11,9 +11,19 @@
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
     <script src="js/main.js"></script>
+
+    <style>
+body {
+     background: url(images/background.jpg) no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+  background-size: cover;
+}
+</style>
 </head>
 
-<body style="background-image: url(images/background.jpg)">
+<body >
 <header>
     <div class="fixedElement">
         <p id="dates">URMATOAREA COMPETITIE</p>
@@ -29,35 +39,29 @@
         </div>
     </div>
     <ul id="menu">
-        <li><a href="#">Acasa</a></li>
+        <li><a href="http://localhost:8088/main.html">Acasa</a></li>
         <li>
-            <a href="#">Jucatori</a>
+            <a href="http://localhost:8088/listaJucatori.html">Jucatori</a>
             <ul>
-                <li><a href="#">Adauga jucatori</a></li>
+                <li><a href="http://localhost:8088/formularJucatori.html">Adauga jucatori</a></li>
             </ul>
         </li>
         <li>
-            <a href="#">Echipe</a>
+            <a href="http://localhost:8088/listaEchipe.html">Echipe</a>
             <ul>
                 <li><a href="#">Adauga echipe</a></li>
             </ul>
         </li>
         <li><a href="#">Competitii</a></li>
         <li>
-            <a href="#">Antrenori</a>
+            <a href="http://localhost:8088/listaAntrenori.html">Antrenori</a>
             <ul>
-                <li><a href="#">Adauga antrenori</a></li>
+                <li><a href="http://localhost:8088/formularAntrenori.html">Adauga antrenori</a></li>
             </ul>
         </li>
-        <li><a href="#">Galerie</a></li>
+        <li><a href="http://localhost:8088/galerie.html">Galerie</a></li>
         <li>
             <a href="#">Stiri</a>
-            <ul>
-                <li><a href="#">CSS</a></li>
-                <li><a href="#">Graphic design</a></li>
-                <li><a href="#">Development tools</a></li>
-                <li><a href="#">Web design</a></li>
-            </ul>
         </li>
     </ul>
 </header>

@@ -1,7 +1,20 @@
-$(document).ready(function() {
- var table = $('#example').DataTable();
+var jucatorUrl="http://localhost:8088/jucatorCustom/jucatori";
 
-  // Get the modal
+$(document).ready(function() {
+  $('#jucatorTable').DataTable({
+        "ajax" : {
+                    "url" : jucatorUrl,
+                    "dataSrc": ''
+                },
+        "columns": [
+            { "data": "loc" },
+            { "data": "nume" },
+            { "data": "prenume" },
+            { "data": "dataNasterii" },
+            { "data": "eMail" }
+        ]
+    });
+// Get the modal
   var modal = document.getElementById('myModal');
 
   // Get the <span> element that closes the modal
@@ -36,7 +49,10 @@ $(document).ready(function() {
     }
     modal.style.display = "block";
   } );
+
+
 } );
+
 
 
 $(function() {

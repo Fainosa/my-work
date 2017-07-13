@@ -11,6 +11,8 @@ import ro.ase.csie.licenta.domain.Jucator;
 import ro.ase.csie.licenta.repository.EchipaRepository;
 import ro.ase.csie.licenta.repository.JucatorRepository;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -29,6 +31,18 @@ public class JucatoriRestController {
 
         if (result.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        Collections.sort(result, new Comparator<Jucator>() {
+                    @Override
+                    public int compare(Jucator o1, Jucator o2) {
+                        return o1.toString().compareTo(o2.toString());
+                    }
+                }
+        );
+
+        for(int i=0; i<result.size(); i++){
+            result.get(i).setNumarJucator(i+1);
         }
 
         return new ResponseEntity<>(result, HttpStatus.OK);

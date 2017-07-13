@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
 <head>
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <meta name="viewport" content="width=device-width">
     <link href="css/style.css" type="text/css" rel="stylesheet"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script  type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script  type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-
-    <script src="js/clasamentEchipe.js"></script>
+    <script src="js/formularJucatori.js"></script>
 
     <style>
 body {
@@ -30,23 +22,10 @@ body {
 }
 </style>
 
-    <title>Statistics</title>
 </head>
+
 <body >
 <header>
-    <div class="fixedElement">
-        <p id="dates">URMATOAREA COMPETITIE</p>
-        <p id="dates">20.07.2017 - 23.07.2017</p>
-        <div class="competition">
-            <div class="team1">
-                <img src="images/e1.png"/>
-            </div>
-            <span id="vs"> VS </span>
-            <div class="team2">
-                <img src="images/e2.png"/>
-            </div>
-        </div>
-    </div>
     <ul id="menu">
         <li><a href="http://localhost:8088/main.html">Acasa</a></li>
         <li>
@@ -77,8 +56,28 @@ body {
         </li>
     </ul>
 </header>
-<div id="editCompetition" class="container ">
-    <div id="graph"></div>
+<div class="container" style="width:50%;">
+    <form action="/action_page.php">
+        <label for="nume" class="labelForm">Nume</label>
+        <input type="text" id="nume" name="nume" placeholder="Nume echipa..">
+
+        <label for="locatie" class="labelForm">Locatie</label>
+        <input type="text" id="locatie" name="locatie" placeholder="Locatie..">
+
+        <label  class="labelForm">Data </label>
+        <form>
+            <div class="nativeDatePicker">
+                <input type="date" id="infiintare" name="infiintare" class="dataNasteriiInput">
+                <span class="validity"></span>
+            </div>
+        </form>
+
+        <div><br/>
+            <input type="submit" id="btn_submit" value="Submit">
+        </div>
+    </form>
 </div>
+</div>
+
 </body>
 </html>

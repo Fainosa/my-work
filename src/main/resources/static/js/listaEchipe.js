@@ -1,5 +1,19 @@
+var echipaUrl="http://localhost:8088/echipa/all";
+
 $(document).ready(function() {
- var table = $('#example').DataTable();
+ var table= $('#echipaTable').DataTable({
+        "ajax" : {
+                    "url" : echipaUrl,
+                    "dataSrc": ''
+                },
+        "columns": [
+            { "data": "id" },
+            { "data": "numeEchipa" },
+            { "data": "locatie" },
+            { "data": "dataInfiintare" }
+        ]
+
+    });
 
   // Get the modal
   var modal = document.getElementById('myModal');
@@ -32,7 +46,7 @@ $(document).ready(function() {
       'prenume':'Ceva1',
     }];
 
-  $('#example tbody').on('click', 'tr', function () {
+  $('#echipaTable tbody').on('click', 'tr', function () {
     var listaJucatori = document.getElementById("listaJucatori");
     listaJucatori.innerHTML = '';
     var data = table.row( this ).data();

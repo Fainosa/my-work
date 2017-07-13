@@ -1,21 +1,13 @@
 var echipeUrl="http://localhost:8088/echipa/all";
-var echipe;
 
 
 $(document).ready(function() {
-getData(echipeUrl);
+   getData(echipeUrl);
 
-$(function() {
-  if ($.browser.msie && $.browser.version.substr(0,1)<7)
-  {
-    $('li').has('ul').mouseover(function(){
-        $(this).children('ul').css('visibility','visible');
-        }).mouseout(function(){
-        $(this).children('ul').css('visibility','hidden');
-        })
-  }
+$("#btn_submit" ).on( "click", function() {
+    alert("fghjkfgh");
 });
-
+});
 
 function getData(api) {
     $.ajax({
@@ -24,12 +16,27 @@ function getData(api) {
         dataType : 'json',
         async : false,
         success : function(data) {
-            echipe=data;
+            populateDropdown(data);
         },
         error : function(xhr, message, errorThrown) {
             alert(errorThrown);
         }
     });
+}
+
+function populateDropdown(data) {
+    var myOption = [];
+
+     $.each(data, function(i, item) {
+           myOption[i] = item.numeEchipa;
+        });
+
+    var items;
+    for (var i=0; i< myOption.length; i++){
+        items += "<option>" + myOption[i] + "</option>";
+    }
+
+    $("#drop-down").append(items);
 }
 
 

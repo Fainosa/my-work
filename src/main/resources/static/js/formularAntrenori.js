@@ -3,6 +3,9 @@ var echipeUrl = 'http://localhost:8088/echipa/all';
 $(document).ready(function() {
    getData(echipeUrl);
 
+$("#btn_submit" ).on( "click", function() {
+    alert("fghjkfgh");
+});
 
 });
 

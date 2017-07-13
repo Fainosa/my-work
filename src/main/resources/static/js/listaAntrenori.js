@@ -1,5 +1,21 @@
+var antrenorUrl="http://localhost:8088/antrenor/all";
+
 $(document).ready(function() {
- var table = $('#example').DataTable();
+var table= $('#antrenorTable').DataTable({
+        "ajax" : {
+                    "url" : antrenorUrl,
+                    "dataSrc": ''
+                },
+        "columns": [
+            { "data": "id" },
+            { "data": "nume" },
+            { "data": "prenume" },
+            { "data": "dataNasterii" },
+            { "data": "eMail" },
+            { "data": "telefon"}
+        ]
+
+    });
 
   // Get the modal
   var modal = document.getElementById('myModal');
@@ -24,7 +40,7 @@ $(document).ready(function() {
 
     }];
 
-  $('#example tbody').on('click', 'tr', function () {
+  $('#antrenorTable tbody').on('click', 'tr', function () {
     var listaAntrenori = document.getElementById("listaAntrenori");
     listaAntrenori.innerHTML = '';
     var data = table.row( this ).data();

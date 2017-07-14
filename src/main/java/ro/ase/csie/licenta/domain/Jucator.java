@@ -23,6 +23,8 @@ public class Jucator {
     private int numarJucator;
     private String parola;
 
+    private int echipaId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_echipa")
     private Echipa echipa;
@@ -47,6 +49,18 @@ public class Jucator {
         this.user = user;
     }
 
+    public Jucator(String nume, String prenume, float inaltime, float greutate, Date dataNasterii, String eMail, int numarJucator, String parola, int echipa, User user) {
+        this.nume = nume;
+        this.prenume = prenume;
+        this.inaltime = inaltime;
+        this.greutate = greutate;
+        this.dataNasterii = dataNasterii;
+        this.eMail = eMail;
+        this.numarJucator = numarJucator;
+        this.parola = parola;
+        this.user = user;
+        this.echipaId = echipa;
+    }
 
     public long getId() {
         return id;

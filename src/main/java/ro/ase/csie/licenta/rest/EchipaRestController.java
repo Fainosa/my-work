@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import ro.ase.csie.licenta.domain.Echipa;
+import ro.ase.csie.licenta.domain.Jucator;
 import ro.ase.csie.licenta.domain.Meci;
 import ro.ase.csie.licenta.repository.EchipaRepository;
 import ro.ase.csie.licenta.repository.MeciRepository;
@@ -82,6 +83,17 @@ public class EchipaRestController {
         repository.save(echipa);
 
         return new ResponseEntity<>(echipa, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
+    public ResponseEntity<List<Echipa>> getEchipaByName( @PathVariable("name") String name) {
+        List<Echipa> result = repository.findByNumeEchipa(name);
+
+        if (result == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/meci/{id}", method = RequestMethod.GET)

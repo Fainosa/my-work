@@ -43,6 +43,8 @@ public class AntrenoriRestController {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("antrenor/{id}").buildAndExpand(antrenor.getId()).toUri());
 
+        List<Antrenor> antrenors = repository.findAll();
+
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 

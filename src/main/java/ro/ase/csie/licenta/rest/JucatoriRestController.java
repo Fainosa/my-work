@@ -33,14 +33,6 @@ public class JucatoriRestController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
 
-        Collections.sort(result, new Comparator<Jucator>() {
-                    @Override
-                    public int compare(Jucator o1, Jucator o2) {
-                        return o1.toString().compareTo(o2.toString());
-                    }
-                }
-        );
-
         for(int i=0; i<result.size(); i++){
             result.get(i).setNumarJucator(i+1);
         }
@@ -51,7 +43,6 @@ public class JucatoriRestController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<Void> addJucatori(@RequestBody Jucator jucator, UriComponentsBuilder ucBuilder) {
-
         repository.save(jucator);
 
         HttpHeaders headers = new HttpHeaders();

@@ -1,5 +1,5 @@
 var jucatorUrl="http://localhost:8088/jucator/all";
-
+var jucator;
 $(document).ready(function() {
  var table= $('#jucatorTable').DataTable({
         "ajax" : {
@@ -15,6 +15,7 @@ $(document).ready(function() {
         ]
 
     });
+    getData(jucatorUrl);
 
 // Get the modal
   var modal = document.getElementById('myModal');
@@ -40,14 +41,15 @@ $(document).ready(function() {
     }];
 
   $('#jucatorTable tbody').on('click', 'tr', function () {
+
     var listaJucatori = document.getElementById("listaJucatori");
     listaJucatori.innerHTML = '';
     var data = table.row( this ).data();
     var header = document.getElementById("numeJucator");
-    header.innerHTML = data[0] + " " + data[1];
+    header.innerHTML = data.nume+ " "+data.prenume;
 
     for (var i =0; i<jucator.length; i++) {
-      listaJucatori.innerHTML += "<li>" + jucator[i].echipa + "</li>";
+      listaJucatori.innerHTML += "<li>" + jucator[i].greutate + "</li>";
     }
     modal.style.display = "block";
   } );
@@ -55,6 +57,37 @@ $(document).ready(function() {
 
 
 } );
+
+function getData(api) {
+    $.ajax({
+        url : api,
+        type : 'GET',
+        dataType : 'json',
+        async : false,
+        success : function(data) {
+        populatePopUp(data);
+        },
+        error : function(xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+
+function populatePopUp(data) {
+    var myOption = [];
+
+     $.each(data, function(i, item) {
+           myOption[i] = item.greutate +" " +item.inaltime;
+
+        });
+
+    var items;
+    for (var i=0; i< myOption.length; i++){
+        items += "<option>" + myOption[i] + "</option>";
+    }
+console.log(items);
+    $("#populatePopUp").append(items);
+}
 
 
 

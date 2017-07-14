@@ -46,13 +46,14 @@ $(document).ready(function() {
       'prenume':'Ceva1',
     }];
 
-  $('#echipaTable tbody').on('click', 'tr', function () {
+  $('#echipaTable ').on('click', 'tr', function () {
+
     var listaJucatori = document.getElementById("listaJucatori");
     listaJucatori.innerHTML = '';
     var data = table.row( this ).data();
-    var header = document.getElementById("numeEchipa");
-    header.innerHTML = data[0];
 
+    var header = document.getElementById("numeEchipa");
+    header.innerHTML =  data.numeEchipa;
     for (var i =0; i<jucatori.length; i++) {
       listaJucatori.innerHTML += "<li>" + jucatori[i].nume + "</li>";
     }

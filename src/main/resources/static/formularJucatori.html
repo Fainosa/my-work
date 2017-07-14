@@ -37,7 +37,7 @@ body {
         <li>
             <a href="http://localhost:8088/listaEchipe.html">Echipe</a>
             <ul>
-                <li><a href="http://localhost:8088/formularEchipe.html">Adauga echipe</a></li>
+                <li><a href="#">Adauga echipe</a></li>
             </ul>
         </li>
         <li><a href="#">Competitii</a></li>
@@ -56,47 +56,38 @@ body {
         </li>
     </ul>
 </header>
-<div class="container" style="width:50%;">
-    <form action="/action_page.php">
-        <label for="nume" class="labelForm">Nume</label>
-        <input type="text" id="nume" name="nume" placeholder="Nume..">
+<div class="container" style="width:60%;">
+    <div class="col-md-6">
+        <form action="/action_page.php" runat="server">
+            <div id="uploadImage">
+                <input type='file' id="imgInp" />
 
-        <label for="prenume" class="labelForm">Prenume</label>
-        <input type="text" id="prenume" name="prenume" placeholder="Prenume..">
-
-        <label for="inaltime" class="labelForm">Inaltime</label>
-        <input type="text" id="inaltime" name="inaltime" placeholder="Inaltimea in cm.. ex:185">
-
-        <label for="greutate" class="labelForm">Greutate</label>
-        <input type="text" id="greutate" name="greutate" placeholder="Greutate in kg.. ex:85">
-
-        <label class="labelForm">Data nasterii</label>
-        <form>
+            </div>
+            <input type="text" id="nume" name="nume" placeholder="Nume">
+            <input type="text" id="prenume" name="prenume" placeholder="Prenume">
+            <input type="text" id="eMail" name="eMail" placeholder="Email">
+            <input type="text" id="telefon" name="telefon" placeholder="Telefon">
+            <label class="labelForm">Data nasterii</label>
             <div class="nativeDatePicker">
                 <input type="date" id="bday" name="bday" class="dataNasteriiInput">
                 <span class="validity"></span>
             </div>
-        </form>
-
-        <label for="eMail" class="labelForm">Email</label>
-        <input type="text" id="eMail" name="eMail" placeholder="Email..">
-
-        <label for="numarJucator" class="labelForm">Numar jucator</label>
-        <input type="text" id="numarJucator" name="numarJucator" placeholder="Numar jucator..">
-
-        <label  class="labelForm">Echipa</label>
-        <div>
-            <div  class="dropdown">
-                <select id="drop-down"></select>
-                </ul>
+            <label  class="labelForm">Echipa</label>
+            <div>
+                <div class="dropdown">
+                    <select id="drop-down"></select>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div><br/>
-            <input type="submit" id="btn_submit" value="Submit">
-        </div>
-    </form>
-</div>
+            <div><br/>
+                <input type="submit" id="btn_submit" value="Submit">
+                <!--<button id="btn_submit">SUBMIT</button>-->
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6"><img id="imgUpload" src="noPreview.jpg" alt="Your image" /></div>
 </div>
 
+</div>
 </body>
 </html>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import ro.ase.csie.licenta.domain.Antrenor;
 import ro.ase.csie.licenta.domain.Echipa;
+import ro.ase.csie.licenta.domain.Jucator;
 import ro.ase.csie.licenta.repository.AntrenorRepository;
 import ro.ase.csie.licenta.repository.EchipaRepository;
 
@@ -111,5 +112,17 @@ public class AntrenoriRestController {
         }
 
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "addEchipa/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Antrenor> addEchipaPentruJucator( @RequestBody Antrenor antrenor, @PathVariable("id") long id) {
+        Echipa echipa = echipaRepository.findOne(id);
+        if(echipa != null) {
+            antrenor.setEchipa(echipa);
+        }
+
+        repository.save(antrenor);
+
+        return new ResponseEntity<>(antrenor, HttpStatus.CREATED);
     }
 }

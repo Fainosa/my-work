@@ -1,10 +1,7 @@
 var echipeUrl = 'http://localhost:8088/echipa/all';
 var echipaObject;
-var postUrl = 'http://localhost:8088/antrenor/add/';
 
 $(document).ready(function () {
-
-
     getData(echipeUrl);
 
     $("#btn_submit").on("click", function () {
@@ -17,57 +14,37 @@ $(document).ready(function () {
         });
 
         var bday = $("#bday").val();
-        alert(bday);
         var email = $('#email').val();
         var telefon = $('#telefon').val();
         var echipa = $('#drop-down :selected').text();
 
         var numeEchipaForBrowser = echipa.replace(" ", "%20");
-
         var getEchipaByNameUrl = "http://localhost:8088/echipa/name/" + numeEchipaForBrowser;
         getEchipaByName(getEchipaByNameUrl);
 
-        var echipaJson = toObject(echipaObject);
-        console.log(echipaJson);
+        var id_echipa = echipaObject[0].id;
 
         var antrenor = {};
-
         antrenor.nume = nume;
         antrenor.prenume = prenume;
         antrenor.data = bday;
         antrenor.eMail = email;
         antrenor.telefon = telefon;
-        antrenor.echipa = echipaJson;
 
-        console.log(antrenor);
+        var postUrl = 'http://localhost:8088/antrenor/addEchipa/' + id_echipa;
 
-        saveAntrenor(antrenor)
-
+        saveAntrenor(postUrl, antrenor)
     });
 });
 
-$.postJSON = function (url, data, callback) {
-    return jQuery.ajax({
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        'type': 'POST',
-        'url': 'http://localhost:8088/antrenor/add/',
-        'data': JSON.stringify(data),
-        'dataType': 'json',
-
-    });
-};
-
-function saveAntrenor(data) {
+function saveAntrenor(url, data) {
     $.ajax({
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        'type': 'POST',
-        'url': postUrl,
+        'type': 'PUT',
+        'url': url,
         'data': JSON.stringify(data),
         'dataType': 'json',
         'success': alert("OBJECT SAVED!")
@@ -102,13 +79,6 @@ function getEchipaByName(api) {
             alert(errorThrown);
         }
     });
-}
-
-function toObject(arr) {
-    var rv = {};
-    for (var i = 0; i < arr.length; ++i)
-        rv[i] = arr[i];
-    return rv;
 }
 
 function populateDropdown(data) {

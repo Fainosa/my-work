@@ -116,4 +116,16 @@ public class JucatoriRestController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "addEchipa/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Jucator> addEchipaPentruJucator(@RequestBody Jucator jucator, @PathVariable("id") long id) {
+        Echipa echipa = echipaRepository.findOne(id);
+        if(echipa != null) {
+            jucator.setEchipa(echipa);
+        }
+
+        repository.save(jucator);
+
+        return new ResponseEntity<>(jucator, HttpStatus.CREATED);
+    }
+
 }

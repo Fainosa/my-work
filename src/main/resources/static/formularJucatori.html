@@ -5,26 +5,25 @@
     <link href="css/style.css" type="text/css" rel="stylesheet"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script  type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script  type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script  type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
     <script src="js/formularJucatori.js"></script>
-
     <style>
-body {
-     background: url(images/background.jpg) no-repeat center center fixed;
-   -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-  background-size: cover;
-}
-</style>
+        body {
+            background: url(images/background.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
 
 </head>
 
-<body >
+<body>
 <header>
     <ul id="menu">
         <li><a href="http://localhost:8088/main.html">Acasa</a></li>
@@ -58,37 +57,40 @@ body {
 </header>
 <div class="container" style="width:60%;">
     <div class="col-md-6">
-        <form action="/action_page.php" runat="server">
-            <div id="uploadImage">
-                <input type='file' id="imgInp" />
-
+        <form action="/action_page.php">
+            <div id="j_uploadImage">
+                <input type='file' id="imgInp"/>
             </div>
-            <input type="text" id="nume" name="nume" placeholder="Nume">
-            <input type="text" id="prenume" name="prenume" placeholder="Prenume">
-            <input type="text" id="eMail" name="eMail" placeholder="Email">
+
+            <input type="text" id="j_nume" name="nume" placeholder="Nume">
+            <input type="text" id="j_prenume" name="prenume" placeholder="Prenume">
+            <input type="text" id="j_email" name="eMail" placeholder="Email">
             <label class="labelForm">Data nasterii</label>
-            <div class="nativeDatePicker">
-                <input type="date" id="bday" name="bday" class="dataNasteriiInput">
-                <span class="validity"></span>
-            </div>
-            <input type="text" id="greutate" name="greutate" placeholder="Greutate">
-            <input type="text" id="inaltime" name="inaltime" placeholder="Inaltime">
+
+            <form>
+                <div class="nativeDatePicker">
+                    <input type="date" id="j_bday" name="bday" class="dataNasteriiInput">
+                    <span class="validity"></span>
+                </div>
+            </form>
+
+            <input type="text" id="j_greutate" name="j_greutate" placeholder="Greutate">
+            <input type="text" id="j_inaltime" name="j_inaltime" placeholder="Inaltime">
 
 
-            <label  class="labelForm">Echipa</label>
+            <label class="labelForm">Echipa</label>
             <div>
                 <div class="dropdown">
-                    <select id="drop-down"></select>
+                    <select id="j_drop-down"></select>
                     </ul>
                 </div>
             </div>
             <div><br/>
-                <input type="submit" id="btn_submit" value="Submit">
-                <!--<button id="btn_submit">SUBMIT</button>-->
+                <input type="submit" id="j_btn_submit" value="Submit">
             </div>
         </form>
     </div>
-    <div class="col-md-6"><img id="imgUpload" src="images/entityImages/default.jpg" alt="Your image" /></div>
+    <div class="col-md-6"><img id="j_imgUpload" src="images/entityImages/default.jpg" alt="Your image"/></div>
 </div>
 
 </div>

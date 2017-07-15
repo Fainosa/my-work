@@ -1,59 +1,77 @@
 var echipeUrl = 'http://localhost:8088/echipa/all';
 var echipaObject;
 
-$(document).ready(function() {
-   getData(echipeUrl);
+$(document).ready(function () {
+    getData(echipeUrl);
 
-    $("#btn_submit" ).click(function() {
-        var nume = $('#nume').val();
-        var prenume = $('#prenume').val();
-         $('input[type="date"]').change(function () {
-                   var inputDate = new Date(this.value);
-               });
-       var bday = $("#bday").val();
-       var email = $('#email').val();
-       var inaltime = $('#inaltime').val();
-       var greutate = $('#greutate').val();
+    $("#j_btn_submit").on("click", function () {
 
-   var echipa = $('#drop-down :selected').text();
+        var nume = $('#j_nume').val();
+        var prenume = $('#j_prenume').val();
 
+        $('input[type="date"]').change(function () {
+            var inputDate = new Date(this.value);
+        });
+
+        var bday = $("#j_bday").val();
+        var email = $('#j_email').val();
+        var inaltime = $('#j_inaltime').val();
+        var greutate = $('#j_greutate').val();
+
+        var echipa = $('#j_drop-down :selected').text();
         var numeEchipaForBrowser = echipa.replace(" ", "%20");
         var getEchipaByNameUrl = "http://localhost:8088/echipa/name/" + numeEchipaForBrowser;
+
         getEchipaByName(getEchipaByNameUrl);
+        var id_echipa = echipaObject[0].id;
 
-        console.log(echipaObject);
+        var jucator = {};
+        jucator.nume = nume;
+        jucator.prenume = prenume;
+        jucator.data = bday;
+        jucator.eMail = email;
+        jucator.inaltime = inaltime;
+        jucator.greutate = greutate;
 
+        var postUrl = 'http://localhost:8088/jucator/addEchipa/' + id_echipa;
 
+        saveJucator(postUrl, jucator)
 
     });
 
-	function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#imgUpload').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#imgInp").change(function(){
-        readURL(this);
-    });
 });
+
+function saveJucator(url, data) {
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        'type': 'PUT',
+        'url': url,
+        'data': JSON.stringify(data),
+        'dataType': 'json',
+        'success': function () {
+           alert("Jucatorul a fost introdus in sistem!");
+            $('#j_nume').val("");
+            $('#j_prenume').val("");
+            $('#j_email').val("");
+            $('#j_inaltime').val("");
+            $('#j_greutate').val("");
+        }
+    });
+}
 
 function getData(api) {
     $.ajax({
-        url : api,
-        type : 'GET',
-        dataType : 'json',
-        async : false,
-        success : function(data) {
-           populateDropdown(data);
+        url: api,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            populateDropdown(data);
         },
-        error : function(xhr, message, errorThrown) {
+        error: function (xhr, message, errorThrown) {
             alert(errorThrown);
         }
     });
@@ -66,8 +84,7 @@ function getEchipaByName(api) {
         dataType: 'json',
         async: false,
         success: function (data) {
-        alert("ceva");
-        console.log(data);
+            console.log(data);
             echipaObject = data;
         },
         error: function (xhr, message, errorThrown) {
@@ -79,16 +96,16 @@ function getEchipaByName(api) {
 function populateDropdown(data) {
     var myOption = [];
 
-     $.each(data, function(i, item) {
-           myOption[i] = item.numeEchipa;
-        });
+    $.each(data, function (i, item) {
+        myOption[i] = item.numeEchipa;
+    });
 
     var items;
-    for (var i=0; i< myOption.length; i++){
+    for (var i = 0; i < myOption.length; i++) {
         items += "<option>" + myOption[i] + "</option>";
     }
 
-    $("#drop-down").append(items);
+    $("#j_drop-down").append(items);
 }
 
 

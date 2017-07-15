@@ -63,7 +63,13 @@ function saveAntrenor(url, data) {
         'url': url,
         'data': JSON.stringify(data),
         'dataType': 'json',
-        'success': alert("OBJECT SAVED!")
+        'success': function () {
+            alert("Antrenorul a fost introdus in sistem!");
+            $('#nume').val("");
+            $('#prenume').val("");
+            $('#email').val("");
+            $('#telefon').val("");
+        }
     });
 }
 

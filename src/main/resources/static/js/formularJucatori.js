@@ -1,14 +1,31 @@
 var echipeUrl = 'http://localhost:8088/echipa/all';
+var echipaObject;
 
 $(document).ready(function() {
    getData(echipeUrl);
 
     $("#btn_submit" ).click(function() {
-        var nume = $('#nume').val(); alert(nume);
-        var prenume = $('#prenume').val(); alert(nume);
-        var dataNasteri = $('#bday').val(); alert(dataNasteri);
-    });
+        var nume = $('#nume').val();
+        var prenume = $('#prenume').val();
+         $('input[type="date"]').change(function () {
+                   var inputDate = new Date(this.value);
+               });
+       var bday = $("#bday").val();
+       var email = $('#email').val();
+       var inaltime = $('#inaltime').val();
+       var greutate = $('#greutate').val();
 
+   var echipa = $('#drop-down :selected').text();
+
+        var numeEchipaForBrowser = echipa.replace(" ", "%20");
+        var getEchipaByNameUrl = "http://localhost:8088/echipa/name/" + numeEchipaForBrowser;
+        getEchipaByName(getEchipaByNameUrl);
+
+        console.log(echipaObject);
+
+
+
+    });
 
 	function readURL(input) {
         if (input.files && input.files[0]) {
@@ -42,6 +59,23 @@ function getData(api) {
     });
 }
 
+function getEchipaByName(api) {
+    $.ajax({
+        url: api,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+        alert("ceva");
+        console.log(data);
+            echipaObject = data;
+        },
+        error: function (xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+
 function populateDropdown(data) {
     var myOption = [];
 
@@ -58,28 +92,6 @@ function populateDropdown(data) {
 }
 
 
-
-/* Mobile */
-$('#menu-wrap').prepend('<div id="menu-trigger">Menu</div>');
-$("#menu-trigger").on("click", function(){
-    $("#menu").slideToggle();
-});
-
-// iPad
-var isiPad = navigator.userAgent.match(/iPad/i) != null;
-if (isiPad) $('#menu ul').addClass('no-transition');
-
-$(window).scroll(function(e){
-  var $el = $('.fixedElement');
-  var isPositionFixed = ($el.css('position') == 'fixed');
-  if ($(this).scrollTop() > 200 && !isPositionFixed){
-    $('.fixedElement').css({'position': 'fixed', 'top': '0px'});
-  }
-  if ($(this).scrollTop() < 200 && isPositionFixed)
-  {
-    $('.fixedElement').css({'position': 'static', 'top': '0px'});
-  }
-});
 
 
 

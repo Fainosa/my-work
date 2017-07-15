@@ -19,6 +19,7 @@ public class Antrenor {
     private Date dataNasterii;
     private String eMail;
     private String telefon;
+    private String imagineUrl;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="id_echipa")
@@ -28,12 +29,13 @@ public class Antrenor {
 
     }
 
-    public Antrenor(String nume, String prenume, Date dataNasterii, String eMail, String telefon, Echipa echipa) {
+    public Antrenor(String nume, String prenume, Date dataNasterii, String eMail, String telefon, String imagineUrl, Echipa echipa) {
         this.nume = nume;
         this.prenume = prenume;
         this.dataNasterii = dataNasterii;
         this.eMail = eMail;
         this.telefon = telefon;
+        this.imagineUrl = imagineUrl;
         this.echipa = echipa;
     }
 
@@ -84,6 +86,15 @@ public class Antrenor {
     public void setTelefon(String telefon) {
         this.telefon = telefon;
     }
+
+    public String getImagineUrl() {
+        return imagineUrl;
+    }
+
+    public void setImagineUrl(String imagineUrl) {
+        this.imagineUrl = imagineUrl;
+    }
+
     @JsonIgnore
     public Echipa getEchipa() {
         return echipa;

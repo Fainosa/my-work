@@ -57,11 +57,13 @@ body {
     </ul>
 </header>
 <div class="container" style="width:50%;">
+    <div class="col-md-6">
     <form action="/action_page.php">
-        <label for="nume" class="labelForm">Nume</label>
-        <input type="text" id="nume" name="nume" placeholder="Nume..">
+        <div id="uploadImage">
+            <input type='file' id="imgInp" />
+        </div>
 
-        <label for="prenume" class="labelForm">Prenume</label>
+        <input type="text" id="nume" name="nume" placeholder="Nume..">
         <input type="text" id="prenume" name="prenume" placeholder="Prenume..">
 
         <label class="labelForm">Data nasterii</label>
@@ -72,10 +74,8 @@ body {
             </div>
         </form>
 
-        <label for="eMail" class="labelForm">Email</label>
-        <input type="text" id="email" name="eMail" placeholder="Email..">
 
-        <label for="telefon" class="labelForm">Telefon</label>
+        <input type="text" id="email" name="eMail" placeholder="Email..">
         <input type="text" id="telefon" name="telefon" placeholder="Telefon..">
 
         <label  class="labelForm">Echipa</label>
@@ -89,6 +89,8 @@ body {
             <input type="submit" id="btn_submit" value="Submit">
         </div>
     </form>
+</div>
+    <div class="col-md-6"><img id="imgUpload" src="images/entityImages/default.jpg" alt="Your image" /></div>
 </div>
 
 </div>

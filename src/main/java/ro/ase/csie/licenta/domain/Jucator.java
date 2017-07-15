@@ -22,8 +22,7 @@ public class Jucator {
     private String eMail;
     private int numarJucator;
     private String parola;
-
-    private int echipaId;
+    private String imagineUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_echipa")
@@ -36,7 +35,7 @@ public class Jucator {
 
     }
 
-    public Jucator(String nume, String prenume, float inaltime, float greutate, Date dataNasterii, String eMail, int numarJucator, String parola, Echipa echipa, User user) {
+    public Jucator(String nume, String prenume, float inaltime, float greutate, Date dataNasterii, String eMail, int numarJucator, String parola, String imagineUrl, Echipa echipa, User user) {
         this.nume = nume;
         this.prenume = prenume;
         this.inaltime = inaltime;
@@ -45,21 +44,9 @@ public class Jucator {
         this.eMail = eMail;
         this.numarJucator = numarJucator;
         this.parola = parola;
+        this.imagineUrl = imagineUrl;
         this.echipa = echipa;
         this.user = user;
-    }
-
-    public Jucator(String nume, String prenume, float inaltime, float greutate, Date dataNasterii, String eMail, int numarJucator, String parola, int echipa, User user) {
-        this.nume = nume;
-        this.prenume = prenume;
-        this.inaltime = inaltime;
-        this.greutate = greutate;
-        this.dataNasterii = dataNasterii;
-        this.eMail = eMail;
-        this.numarJucator = numarJucator;
-        this.parola = parola;
-        this.user = user;
-        this.echipaId = echipa;
     }
 
     public long getId() {
@@ -140,6 +127,14 @@ public class Jucator {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getImagineUrl() {
+        return imagineUrl;
+    }
+
+    public void setImagineUrl(String imagineUrl) {
+        this.imagineUrl = imagineUrl;
     }
 
     @JsonIgnore

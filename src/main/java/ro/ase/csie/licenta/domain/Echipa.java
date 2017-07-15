@@ -21,6 +21,7 @@ public class Echipa {
     private Date dataInfiintare;
     private int cosuriMarcate;
     private int cosuriPrimite;
+    private String imagineUrl;
 
     @OneToMany(mappedBy = "echipa")
     private List<Jucator> jucatori;
@@ -42,12 +43,14 @@ public class Echipa {
 
     }
 
-    public Echipa(String numeEchipa, String locatie, Date dataInfiintare, int cosuriMarcate, int cosuriPrimite, List<Jucator> jucatori, List<Antrenor> antrenori, Meci meci, List<Infrangeri> infrangeri, List<Victorii> victorii) {
+    public Echipa(String numeEchipa, String locatie, Date dataInfiintare, int cosuriMarcate, int cosuriPrimite, String imagineUrl,
+                  List<Jucator> jucatori, List<Antrenor> antrenori, Meci meci, List<Infrangeri> infrangeri, List<Victorii> victorii) {
         this.numeEchipa = numeEchipa;
         this.locatie = locatie;
         this.dataInfiintare = dataInfiintare;
         this.cosuriMarcate = cosuriMarcate;
         this.cosuriPrimite = cosuriPrimite;
+        this.imagineUrl = imagineUrl;
         this.jucatori = jucatori;
         this.antrenori = antrenori;
         this.meci = meci;
@@ -137,6 +140,14 @@ public class Echipa {
 
     public void setCosuriPrimite(int cosuriPrimite) {
         this.cosuriPrimite = cosuriPrimite;
+    }
+
+    public String getImagineUrl() {
+        return imagineUrl;
+    }
+
+    public void setImagineUrl(String imagineUrl) {
+        this.imagineUrl = imagineUrl;
     }
 
     @JsonIgnore

@@ -95,7 +95,6 @@ function getEchipaByJucator(api) {
         dataType: 'json',
         async: false,
         success: function (data) {
-            alert(data)
             echipa = data;
 
         },

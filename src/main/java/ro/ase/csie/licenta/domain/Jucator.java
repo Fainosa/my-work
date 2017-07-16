@@ -24,7 +24,7 @@ public class Jucator {
     private String parola;
     private String imagineUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_echipa")
     private Echipa echipa;
 

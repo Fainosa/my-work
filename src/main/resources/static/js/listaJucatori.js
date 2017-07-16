@@ -3,6 +3,8 @@ var jucatorUrl = "http://localhost:8088/jucator/all";
 var jucatorObject;
 var jucator;
 
+var echipa;
+
 
 $(document).ready(function () {
     var table = $('#jucatorTable').DataTable({
@@ -46,15 +48,22 @@ $(document).ready(function () {
         var lista = document.getElementById("listaJucatori");
         lista.innerHTML = '';
         var data = table.row(this).data();
-            var getJucatorByIdUrl = "http://localhost:8088/jucator/" + data.id;
-            getJucatorById(getJucatorByIdUrl);
+        var getJucatorByIdUrl = "http://localhost:8088/jucator/" + data.id;
+        getJucatorById(getJucatorByIdUrl);
 
         var header = document.getElementById("numeJucator");
-        header.innerHTML = jucator.nume+ " "+jucator.prenume;
+        header.innerHTML = jucator.nume + " " + jucator.prenume;
 
-            lista.innerHTML = "<li style='text-align: center; font-size: 20px; font-family: serif;'>"+"Greutate:" +jucator.greutate + "</br> " +"Inaltime:"+jucator.inaltime+ "</br>"+"Numarul:"+jucator.numarJucator +"</br>"+"Echipa:"+jucator.echipa +"</li>";
+        var getEchipaByJucatorUrl = 'http://localhost:8088/echipa/jucator/' + jucator.id;
+        getEchipaByJucator(getEchipaByJucatorUrl);
 
+        console.log("echipa", echipa);
 
+        lista.innerHTML = "<li style='text-align: center; font-size: 20px; font-family: serif;'>"
+            + " Greutate : " + jucator.greutate + "</br> "
+            + " Inaltime : " + jucator.inaltime + "</br>"
+            + " Numarul : " + jucator.numarJucator + "</br>"
+            + " Echipa : " + echipa.numeEchipa + "</li>";
 
 
         modal.style.display = "block";
@@ -71,6 +80,23 @@ function getData(api) {
         async: false,
         success: function (data) {
             jucatorObject = data;
+
+        },
+        error: function (xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+
+function getEchipaByJucator(api) {
+    $.ajax({
+        url: api,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            alert(data)
+            echipa = data;
 
         },
         error: function (xhr, message, errorThrown) {

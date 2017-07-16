@@ -1,5 +1,8 @@
 var antrenorUrl="http://localhost:8088/antrenor/all";
 
+var antrenorObject;
+var antrenor;
+
 $(document).ready(function() {
 var table= $('#antrenorTable').DataTable({
         "ajax" : {
@@ -35,58 +38,56 @@ var table= $('#antrenorTable').DataTable({
     }
   }
 
-  var antrenor = [{
-      'echipa':'ASDFGHJ',
-
-    }];
-
   $('#antrenorTable tbody').on('click', 'tr', function () {
     var listaAntrenori = document.getElementById("listaAntrenori");
     listaAntrenori.innerHTML = '';
     var data = table.row( this ).data();
-    var header = document.getElementById("numeAntrenor");
-    header.innerHTML = data[0];
 
-    for (var i =0; i<antrenor.length; i++) {
-      listaAntrenori.innerHTML += "<li>" + antrenor[i].echipa + "</li>";
-    }
+     var getAntrenorByIdUrl = "http://localhost:8088/antrenor/" + data.id;
+                getAntrenorById(getAntrenorByIdUrl);
+
+    var header = document.getElementById("numeAntrenor");
+  header.innerHTML = antrenor.nume+ " "+antrenor.prenume;
+
+
+      listaAntrenori.innerHTML = "<li style='text-align: center; font-size: 20px; font-family: serif;'>"+"Echipa:"+antrenor.echipa +"</li>";
+
     modal.style.display = "block";
   } );
 } );
 
 
-$(function() {
-  if ($.browser.msie && $.browser.version.substr(0,1)<7)
-  {
-    $('li').has('ul').mouseover(function(){
-        $(this).children('ul').css('visibility','visible');
-        }).mouseout(function(){
-        $(this).children('ul').css('visibility','hidden');
-        })
-  }
-});
+function getData(api) {
+    $.ajax({
+        url: api,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            antrenorObject = data;
 
-/* Mobile */
-$('#menu-wrap').prepend('<div id="menu-trigger">Menu</div>');
-$("#menu-trigger").on("click", function(){
-    $("#menu").slideToggle();
-});
+        },
+        error: function (xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
 
-// iPad
-var isiPad = navigator.userAgent.match(/iPad/i) != null;
-if (isiPad) $('#menu ul').addClass('no-transition');
+function getAntrenorById(api) {
+    $.ajax({
+        url: api,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            antrenor = data;
+        },
+        error: function (xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
 
-$(window).scroll(function(e){
-  var $el = $('.fixedElement');
-  var isPositionFixed = ($el.css('position') == 'fixed');
-  if ($(this).scrollTop() > 200 && !isPositionFixed){
-    $('.fixedElement').css({'position': 'fixed', 'top': '0px'});
-  }
-  if ($(this).scrollTop() < 200 && isPositionFixed)
-  {
-    $('.fixedElement').css({'position': 'static', 'top': '0px'});
-  }
-});
 
 
 

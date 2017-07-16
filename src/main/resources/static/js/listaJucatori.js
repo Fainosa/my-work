@@ -43,27 +43,20 @@ $(document).ready(function () {
 
     $('#jucatorTable tbody').on('click', 'tr', function () {
 
-        var lista = $("#listaJucatori");
-        listaJucatori.innerHTML = '';
+        var lista = document.getElementById("listaJucatori");
+        lista.innerHTML = '';
         var data = table.row(this).data();
-        console.log("dataaaa", data)
-
-    // var header = document.getElementById("numeJucator");
-    // header.innerHTML = data.nume+ " "+data.prenume;
-
-
-        // if (data.id == jucatorObject.id) {
             var getJucatorByIdUrl = "http://localhost:8088/jucator/" + data.id;
             getJucatorById(getJucatorByIdUrl);
-
-            console.log('jucator', jucator);
 
         var header = document.getElementById("numeJucator");
         header.innerHTML = jucator.nume+ " "+jucator.prenume;
 
-            lista.innerHTML = "<li>" + jucator.eMail + "</li>";
-            console.log(jucator.eMail);
-        // }
+            lista.innerHTML = "<li style='text-align: center; font-size: 20px; font-family: serif;'>"+"Greutate:" +jucator.greutate + "</br> " +"Inaltime:"+jucator.inaltime+ "</br>"+"Numarul:"+jucator.numarJucator +"</br>"+"Echipa:"+jucator.echipa +"</li>";
+
+
+
+
         modal.style.display = "block";
     });
 

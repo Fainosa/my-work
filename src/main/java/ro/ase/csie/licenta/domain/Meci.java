@@ -16,8 +16,6 @@ public class Meci {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String echipaGazda;
-    private String echipaOaspete;
     private Date data;
 
     @OneToMany(mappedBy = "meci")
@@ -31,10 +29,8 @@ public class Meci {
 
     }
 
-    public Meci(String echipaGazda, String echipaOaspete, Date data, List<Echipa> echipe, Competitie competitie) {
+    public Meci( Date data, List<Echipa> echipe, Competitie competitie) {
         this.id = id;
-        this.echipaGazda = echipaGazda;
-        this.echipaOaspete = echipaOaspete;
         this.data = data;
         this.echipe = echipe;
         this.competitie = competitie;
@@ -48,21 +44,7 @@ public class Meci {
         this.id = id;
     }
 
-    public String getEchipaGazda() {
-        return echipaGazda;
-    }
 
-    public void setEchipaGazda(String echipaGazda) {
-        this.echipaGazda = echipaGazda;
-    }
-
-    public String getEchipaOaspete() {
-        return echipaOaspete;
-    }
-
-    public void setEchipaOaspete(String echipaOaspete) {
-        this.echipaOaspete = echipaOaspete;
-    }
 
     public Date getData() {
         return data;
@@ -84,8 +66,6 @@ public class Meci {
     public String toString() {
         return "Meci{" +
                 "id=" + id +
-                ", echipaGazda='" + echipaGazda + '\'' +
-                ", echipaOaspete='" + echipaOaspete + '\'' +
                 ", data=" + data +
                 ", echipe=" + echipe +
                 ", competitie=" + competitie +

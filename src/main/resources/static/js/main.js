@@ -23,22 +23,23 @@ $(document).ready(function() {
     getMeciuri(meciuriUrl);
     populateList(meciuri)
 
-    function populateList(data) {
-        $.each(data, function(i, item) {
-            alert("each hjocewcw");
-            // console.log(item[i].echipe[0].numeEchipa + "   " + item[i].echipe[1].numeEchipa);
-            // $('#list').appendChild('<li>' + item[i].echipe[0].numeEchipa + '<span> vs </span>' + item[i].echipe[1].numeEchipa +  '</li>');
-        });
+    console.log(meciuri)
 
 
-        // $('#list').ap
-        // $('#list').click(function() {
-        //     var out = '<ul><li>Item One</li><li>Item Two</li><li>Item Three</li></ul>';
-        //     $('#listView').html(out);
-        // });
-    }
 
 } );
+
+function populateList(data) {
+    var content = "";
+
+    $.each(data, function(i, item) {
+        var line = '<li>' + item.echipe[0].numeEchipa + '<span> vs </span>' + item.echipe[1].numeEchipa +  '</li>';
+        content = content + line;
+    });
+
+    $('#list').html(content);
+
+}
 
 function getMeciuri(api) {
     $.ajax({
@@ -57,17 +58,17 @@ function getMeciuri(api) {
 
 
 
-
-$(function() {
-  if ($.browser.msie && $.browser.version.substr(0,1)<7)
-  {
-    $('li').has('ul').mouseover(function(){
-        $(this).children('ul').css('visibility','visible');
-        }).mouseout(function(){
-        $(this).children('ul').css('visibility','hidden');
-        })
-  }
-});
+//
+// $(function() {
+//   if ($.browser.msie && $.browser.version.substr(0,1)<7)
+//   {
+//     $('li').has('ul').mouseover(function(){
+//         $(this).children('ul').css('visibility','visible');
+//         }).mouseout(function(){
+//         $(this).children('ul').css('visibility','hidden');
+//         })
+//   }
+// });
 
 
 

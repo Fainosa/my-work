@@ -19,7 +19,7 @@ input {
 }
 
 #competitions{
-	margin-left:30%;
+	margin-left:4%!important;
 }
 ul {
 	list-style-type: none;
@@ -113,6 +113,11 @@ th {
 .team1 {
 	display: inline;
 }
+
+#m_picker{
+    margin-left:10%!important;
+}
+
 .competition img{
 	height: 140px;
 }
@@ -519,7 +524,6 @@ color:white;
     display: block;
     text-align: center;
     margin: auto;
-}
 }
 
 .butonAlegeEchipa:hover{

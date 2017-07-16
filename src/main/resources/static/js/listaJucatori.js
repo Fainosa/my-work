@@ -1,5 +1,5 @@
 var jucatorUrl="http://localhost:8088/jucator/all";
-var jucator;
+var jucatorObject;
 $(document).ready(function() {
  var table= $('#jucatorTable').DataTable({
         "ajax" : {
@@ -16,6 +16,7 @@ $(document).ready(function() {
 
     });
     getData(jucatorUrl);
+console.log(jucatorObject);
 
 // Get the modal
   var modal = document.getElementById('myModal');
@@ -45,12 +46,15 @@ $(document).ready(function() {
     var listaJucatori = document.getElementById("listaJucatori");
     listaJucatori.innerHTML = '';
     var data = table.row( this ).data();
+
     var header = document.getElementById("numeJucator");
     header.innerHTML = data.nume+ " "+data.prenume;
+   if(data.id==jucatorObject.id)
+   {
 
-    for (var i =0; i<jucator.length; i++) {
-      listaJucatori.innerHTML += "<li>" + jucator[i].greutate + "</li>";
-    }
+      listaJucatori.innerHTML = "<li>" + jucatorObject.greutate + "</li>";
+      console.log(jucatorObject.greutate);
+   }
     modal.style.display = "block";
   } );
 
@@ -65,7 +69,8 @@ function getData(api) {
         dataType : 'json',
         async : false,
         success : function(data) {
-        populatePopUp(data);
+       jucatorObject=data;
+
         },
         error : function(xhr, message, errorThrown) {
             alert(errorThrown);
@@ -73,20 +78,8 @@ function getData(api) {
     });
 }
 
-function populatePopUp(data) {
-    var myOption = [];
 
-     $.each(data, function(i, item) {
-           myOption[i] = item.greutate +" " +item.inaltime;
 
-        });
-
-    var items;
-    for (var i=0; i< myOption.length; i++){
-        items += "<option>" + myOption[i] + "</option>";
-    }
-    $("#populatePopUp").append(items);
-}
 
 
 

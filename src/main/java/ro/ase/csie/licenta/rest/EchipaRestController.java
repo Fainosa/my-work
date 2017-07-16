@@ -139,6 +139,21 @@ public class EchipaRestController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-
+//    @RequestMapping(value = "/antrenor/{id}", method = RequestMethod.GET)
+//    public ResponseEntity<Echipa> getByAntrenor(@PathVariable("id") long id) {
+//       Antrenor antrenor = antrenorRepository.findOne(id);
+//
+//        if (antrenor == null) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//
+//        Echipa result = repository.findByAntrenor(antrenor).get(0);
+//
+//        if (result == null) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//
+//        return new ResponseEntity<>(result, HttpStatus.OK);
+//    }
 
 }

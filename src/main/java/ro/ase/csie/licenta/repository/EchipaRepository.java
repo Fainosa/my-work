@@ -13,6 +13,7 @@ public interface EchipaRepository extends JpaRepository<Echipa, Long> {
     List<Echipa> findByMeci(Meci meci);
     List<Echipa> findByNumeEchipa( String nume);
     List<Echipa> findByJucatori (Jucator jucator);
+    //List<Echipa> findByAntrenor (Antrenor antrenor);
 
 
 }

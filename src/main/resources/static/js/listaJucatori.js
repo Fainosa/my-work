@@ -1,83 +1,105 @@
-var jucatorUrl="http://localhost:8088/jucator/all";
+var jucatorUrl = "http://localhost:8088/jucator/all";
+
 var jucatorObject;
-$(document).ready(function() {
- var table= $('#jucatorTable').DataTable({
-        "ajax" : {
-                    "url" : jucatorUrl,
-                    "dataSrc": ''
-                },
+var jucator;
+
+
+$(document).ready(function () {
+    var table = $('#jucatorTable').DataTable({
+        "ajax": {
+            "url": jucatorUrl,
+            "dataSrc": ''
+        },
         "columns": [
-            { "data": "id" },
-            { "data": "nume" },
-            { "data": "prenume" },
-            { "data": "dataNasterii" },
-            { "data": "eMail" }
+            {"data": "id"},
+            {"data": "nume"},
+            {"data": "prenume"},
+            {"data": "dataNasterii"},
+            {"data": "eMail"}
         ]
 
     });
+
     getData(jucatorUrl);
-console.log(jucatorObject);
 
-// Get the modal
-  var modal = document.getElementById('myModal');
+    // Get the modal
+    var modal = document.getElementById('myModal');
 
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-      modal.style.display = "none";
-  }
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
         modal.style.display = "none";
     }
-  }
 
-  var jucator = [{
-      'echipa':'ASDFGHJ',
-
-    }];
-
-  $('#jucatorTable tbody').on('click', 'tr', function () {
-
-    var listaJucatori = document.getElementById("listaJucatori");
-    listaJucatori.innerHTML = '';
-    var data = table.row( this ).data();
-
-    var header = document.getElementById("numeJucator");
-    header.innerHTML = data.nume+ " "+data.prenume;
-   if(data.id==jucatorObject.id)
-   {
-
-      listaJucatori.innerHTML = "<li>" + jucatorObject.greutate + "</li>";
-      console.log(jucatorObject.greutate);
-   }
-    modal.style.display = "block";
-  } );
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
 
+    $('#jucatorTable tbody').on('click', 'tr', function () {
 
-} );
+        var lista = $("#listaJucatori");
+        listaJucatori.innerHTML = '';
+        var data = table.row(this).data();
+        console.log("dataaaa", data)
+
+    // var header = document.getElementById("numeJucator");
+    // header.innerHTML = data.nume+ " "+data.prenume;
+
+
+        // if (data.id == jucatorObject.id) {
+            var getJucatorByIdUrl = "http://localhost:8088/jucator/" + data.id;
+            getJucatorById(getJucatorByIdUrl);
+
+            console.log('jucator', jucator);
+
+        var header = document.getElementById("numeJucator");
+        header.innerHTML = jucator.nume+ " "+jucator.prenume;
+
+            lista.innerHTML = "<li>" + jucator.eMail + "</li>";
+            console.log(jucator.eMail);
+        // }
+        modal.style.display = "block";
+    });
+
+
+});
 
 function getData(api) {
     $.ajax({
-        url : api,
-        type : 'GET',
-        dataType : 'json',
-        async : false,
-        success : function(data) {
-       jucatorObject=data;
+        url: api,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            jucatorObject = data;
 
         },
-        error : function(xhr, message, errorThrown) {
+        error: function (xhr, message, errorThrown) {
             alert(errorThrown);
         }
     });
 }
 
+function getJucatorById(api) {
+    $.ajax({
+        url: api,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            jucator = data;
+        },
+        error: function (xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
 
 
 

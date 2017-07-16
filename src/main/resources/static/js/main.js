@@ -1,4 +1,7 @@
 var echipeUrl = "http://localhost:8088/custom/echipe";
+var meciuriUrl = "http://localhost:8088/meci/all";
+
+var meciuri = {};
 
 $(document).ready(function() {
     $('#teamTable').DataTable({
@@ -17,7 +20,42 @@ $(document).ready(function() {
         ]
     });
 
+    getMeciuri(meciuriUrl);
+    populateList(meciuri)
+
+    function populateList(data) {
+        $.each(data, function(i, item) {
+            alert("each hjocewcw");
+            // console.log(item[i].echipe[0].numeEchipa + "   " + item[i].echipe[1].numeEchipa);
+            // $('#list').appendChild('<li>' + item[i].echipe[0].numeEchipa + '<span> vs </span>' + item[i].echipe[1].numeEchipa +  '</li>');
+        });
+
+
+        // $('#list').ap
+        // $('#list').click(function() {
+        //     var out = '<ul><li>Item One</li><li>Item Two</li><li>Item Three</li></ul>';
+        //     $('#listView').html(out);
+        // });
+    }
+
 } );
+
+function getMeciuri(api) {
+    $.ajax({
+        url: api,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+           meciuri = data;
+        },
+        error: function (xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+
+
 
 
 $(function() {
@@ -29,28 +67,6 @@ $(function() {
         $(this).children('ul').css('visibility','hidden');
         })
   }
-});
-
-/* Mobile */
-$('#menu-wrap').prepend('<div id="menu-trigger">Menu</div>');       
-$("#menu-trigger").on("click", function(){
-    $("#menu").slideToggle();
-});
-
-// iPad
-var isiPad = navigator.userAgent.match(/iPad/i) != null;
-if (isiPad) $('#menu ul').addClass('no-transition');
-
-$(window).scroll(function(e){ 
-  var $el = $('.fixedElement'); 
-  var isPositionFixed = ($el.css('position') == 'fixed');
-  if ($(this).scrollTop() > 200 && !isPositionFixed){ 
-    $('.fixedElement').css({'position': 'fixed', 'top': '0px'}); 
-  }
-  if ($(this).scrollTop() < 200 && isPositionFixed)
-  {
-    $('.fixedElement').css({'position': 'static', 'top': '0px'}); 
-  } 
 });
 
 

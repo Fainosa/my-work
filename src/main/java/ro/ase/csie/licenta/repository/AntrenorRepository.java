@@ -9,4 +9,6 @@ import java.util.List;
 public interface AntrenorRepository extends JpaRepository<Antrenor, Long> {
     List<Antrenor> findByNume(String nume);
     List<Antrenor> findByEchipa(Echipa echipa);
+
+
 }

@@ -3,6 +3,8 @@ var antrenorUrl="http://localhost:8088/antrenor/all";
 var antrenorObject;
 var antrenor;
 
+var echipa;
+
 $(document).ready(function() {
 var table= $('#antrenorTable').DataTable({
         "ajax" : {
@@ -49,6 +51,11 @@ var table= $('#antrenorTable').DataTable({
     var header = document.getElementById("numeAntrenor");
   header.innerHTML = antrenor.nume+ " "+antrenor.prenume;
 
+   var getEchipaByAntrenorUrl = 'http://localhost:8088/echipa/antrenor/' + antrenor.id;
+          getEchipaByAntrenor(getEchipaByAntrenorUrl);
+
+          console.log("echipa", echipa);
+
 
       listaAntrenori.innerHTML = "<li style='text-align: center; font-size: 20px; font-family: serif;'>"+"Echipa:"+antrenor.echipa +"</li>";
 
@@ -65,6 +72,22 @@ function getData(api) {
         async: false,
         success: function (data) {
             antrenorObject = data;
+
+        },
+        error: function (xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+
+function getEchipaByAntrenor(api) {
+    $.ajax({
+        url: api,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            echipa = data;
 
         },
         error: function (xhr, message, errorThrown) {

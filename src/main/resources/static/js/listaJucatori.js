@@ -52,7 +52,7 @@ $(document).ready(function () {
         getJucatorById(getJucatorByIdUrl);
 
         var header = document.getElementById("numeJucator");
-        header.innerHTML = jucator.nume + " " + jucator.prenume;
+        header.innerHTML = "Nume : "+jucator.nume + " " + jucator.prenume + "</br>"+ "Numar : "+jucator.numarJucator;
 
         var getEchipaByJucatorUrl = 'http://localhost:8088/echipa/jucator/' + jucator.id;
         getEchipaByJucator(getEchipaByJucatorUrl);
@@ -62,8 +62,8 @@ $(document).ready(function () {
         lista.innerHTML = "<li style='text-align: center; font-size: 20px; font-family: serif;'>"
             + " Greutate : " + jucator.greutate + "</br> "
             + " Inaltime : " + jucator.inaltime + "</br>"
-            + " Numarul : " + jucator.numarJucator + "</br>"
             + " Echipa : " + echipa.numeEchipa + "</li>";
+
 
 
         modal.style.display = "block";

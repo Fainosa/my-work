@@ -6,9 +6,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+import ro.ase.csie.licenta.domain.Antrenor;
 import ro.ase.csie.licenta.domain.Echipa;
 import ro.ase.csie.licenta.domain.Jucator;
 import ro.ase.csie.licenta.domain.Meci;
+import ro.ase.csie.licenta.repository.AntrenorRepository;
 import ro.ase.csie.licenta.repository.EchipaRepository;
 import ro.ase.csie.licenta.repository.JucatorRepository;
 import ro.ase.csie.licenta.repository.MeciRepository;
@@ -24,6 +26,9 @@ public class EchipaRestController {
 
     @Autowired
     private JucatorRepository jucatorRepository;
+
+    @Autowired
+    private AntrenorRepository antrenorRepository;
 
     @Autowired
     private MeciRepository meciRepository;
@@ -133,5 +138,7 @@ public class EchipaRestController {
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+
 
 }

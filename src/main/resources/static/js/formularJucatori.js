@@ -39,6 +39,61 @@ $(document).ready(function () {
 
     });
 
+      function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#imgUpload').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                    console.log(input.files[0]);
+
+                    input.files[0].nume = "poza.jpg";
+                    console.log("poza", input.files[0].nume);
+
+
+//                    $.ajax({
+//                        url : 'static/images/entityImages',
+//                        success: function (data) {
+//                            alert('succcessss')
+//                            $(data).find("a").attr("href", function (i, val) {
+//                                if( val.match(/\.(jpe?g|png|gif)$/) ) {
+//                                    $("body").append( "<img src='"+ folder + val +"'>" );
+//                                }
+//                            });
+//                        }
+//                    })
+
+
+                }
+            }
+
+             $('#imgUpload').change(function(){
+                                     readURL(this);
+                                     var frm = $('#imgUpload').get(0).files;
+                                     if(files.lengh>0)
+                                     {
+                                     frm.append('imgUpload', input.files[0]);
+                                     }
+                                     $.ajax({
+                                         method: 'POST',
+                                         address: 'static/images/entityImages',
+                                         data: frm,
+                                         contentType: false,
+                                         processData: false,
+                                         success:function(result){
+                                         },
+                                         error:function(result){
+                                         }
+                                     });
+                                 });
+
+            $("#imgInp").change(function(){
+                readURL(this);
+            });
+
 });
 
 function saveJucator(url, data) {

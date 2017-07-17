@@ -50,6 +50,13 @@ $(document).ready(function () {
         var data = table.row(this).data();
         var getJucatorByIdUrl = "http://localhost:8088/jucator/" + data.id;
         getJucatorById(getJucatorByIdUrl);
+        console.log(jucator.imagineUrl)
+
+        if(jucator.imagineUrl != null) {
+
+            // get existing photo from entityImages that have names like: jucator1.png if jucator.id = 1
+            $("#j_imgUpload").attr("src", "images/entityImages/jucator" + jucator.id + ".jpg");
+        }
 
         var header = document.getElementById("numeJucator");
         header.innerHTML = jucator.nume + " " + jucator.prenume + "</br>"+ "Numar : "+jucator.numarJucator;

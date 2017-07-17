@@ -57,7 +57,7 @@ var table= $('#antrenorTable').DataTable({
           console.log("echipa", echipa);
 
 
-      listaAntrenori.innerHTML = "<li style='text-align: center; font-size: 20px; font-family: serif;'>"+"Echipa:"+antrenor.echipa +"</li>";
+      listaAntrenori.innerHTML = "<li style='text-align: center; font-size: 20px; font-family: serif;'>"+"Echipa:"+echipa.numeEchipa +"</li>";
 
     modal.style.display = "block";
   } );

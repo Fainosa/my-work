@@ -53,6 +53,9 @@ body {
                         <li><a href="http://localhost:8088/clasamentEchipe.html">Grafic</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#">Regulament</a>
+                </li>
             </ul>
         </header>
         <div class="listaEchipe">
@@ -83,7 +86,11 @@ body {
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
+        <div class="col-md-5"><img id="j_imgUpload" src="images/entityImages/default.jpg" width="200" height="200" alt="Your image"/></div>
       <h2 id="numeEchipa"></h2>
+        <button type="button" id="delete-btn" class="btn btn-info">
+            <span class="glyphicon glyphicon-remove"></span> Sterge
+        </button>
     </div>
     <div class="modal-body" id="modalContent">
         <ul id="listaJucatori">

@@ -52,23 +52,34 @@ $(document).ready(function () {
         getJucatorById(getJucatorByIdUrl);
 
         var header = document.getElementById("numeJucator");
-        header.innerHTML = "Nume : "+jucator.nume + " " + jucator.prenume + "</br>"+ "Numar : "+jucator.numarJucator;
+        header.innerHTML = jucator.nume + " " + jucator.prenume + "</br>"+ "Numar : "+jucator.numarJucator;
 
         var getEchipaByJucatorUrl = 'http://localhost:8088/echipa/jucator/' + jucator.id;
         getEchipaByJucator(getEchipaByJucatorUrl);
-
-        console.log("echipa", echipa);
 
         lista.innerHTML = "<li style='text-align: center; font-size: 20px; font-family: serif;'>"
             + " Greutate : " + jucator.greutate + "</br> "
             + " Inaltime : " + jucator.inaltime + "</br>"
             + " Echipa : " + echipa.numeEchipa + "</li>";
 
-
-
         modal.style.display = "block";
-    });
 
+        $("#delete-btn").on("click", function () {
+            var url = "http://localhost:8088/jucator/delete/" + jucator.id;
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                async: false,
+                success: function () {
+                   alert("Jucatorul a fost sters din sistem!")
+                   window.open("listaJucatori.html");
+                },
+                error: function (xhr, message, errorThrown) {
+                    // alert(errorThrown);
+                }
+            });
+        });
+    });
 
 });
 

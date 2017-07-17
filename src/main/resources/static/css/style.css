@@ -56,8 +56,7 @@ ul {
 
 .fixedElement {
     background-color: #c0c0c0;
-    position: fixed;
-    top: 10px;
+    position: inherit;
     z-index: 100;
 	left: 75%;
 	border-top-left-radius: 2em;
@@ -129,7 +128,6 @@ th {
 }
 #dates {
 	text-align: center;
-	margin-top: 10px;
     color: white;
     font: bold 12px Arial, Helvetica;
 	margin-right: 45px;
@@ -183,7 +181,8 @@ th {
     padding: 12px 30px;
     color: #999;
     text-transform: uppercase;
-    font: bold 12px Arial, Helvetica;
+    font: bold 16px;
+    font-family: 'Open Sans', sans-serif;
     text-decoration: none;
     text-shadow: 0 1px 0 #000;
 }
@@ -550,4 +549,33 @@ input[type=text] {
     background-color: inherit;
 	padding: 5px;
 	outline: none;
+}
+
+#imgUpload{
+    width: 80%!important;
+    height: 80%!important;
+}
+
+button#delete-btn:hover {
+background:#e20a14 !important;
+}
+
+#delete-btn {
+    color: #fff;
+    background-color: #ea0c0c;
+    border-color: #46b8da;
+}
+
+label {
+color:white;
+}
+
+select { color:#000 !important;}
+
+a.paginate_button {
+background:white !important;
+ }
+
+.dataTables_info{
+color:white !important;
 }

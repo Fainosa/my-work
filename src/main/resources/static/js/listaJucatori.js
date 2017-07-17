@@ -53,9 +53,10 @@ $(document).ready(function () {
         console.log(jucator.imagineUrl)
 
         if(jucator.imagineUrl != null) {
-
             // get existing photo from entityImages that have names like: jucator1.png if jucator.id = 1
             $("#j_imgUpload").attr("src", "images/entityImages/jucator" + jucator.id + ".jpg");
+        } else {
+            $("#j_imgUpload").attr("src", "images/entityImages/player.jpg");
         }
 
         var header = document.getElementById("numeJucator");

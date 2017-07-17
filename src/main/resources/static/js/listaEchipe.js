@@ -81,17 +81,27 @@ $(document).ready(function() {
       var getJucatorByIdUrl = "http://localhost:8088/jucator/" + data.id;
             getJucatorById(getJucatorByIdUrl);
 
-     if(getEchipaByIdUrl)
-     {
+
       listaJucatori.innerHTML +="<li style='text-align: center; font-size: 20px; font-family: serif;'>"
       +"Nume : " +jucator.nume+" "+jucator.prenume +"</li>" ;
-     }
-     else
-     {
-      listaJucatori.innerHTML +="<li style='text-align: center; font-size: 20px; font-family: serif;'>"
-      + " " +"</li>" ;
-     }
 
+
+
+     $("#delete-btn").on("click", function () {
+            var url = "http://localhost:8088/echipa/delete/" + echipa.id;
+            $.ajax({
+                url: url,
+                type: 'DELETE',
+                async: false,
+                success: function () {
+                   alert("Echipa a fost stearsa din sistem!")
+                   window.open("listaEchipe.html");
+                },
+                error: function (xhr, message, errorThrown) {
+                    // alert(errorThrown);
+                }
+            });
+        });
 
     modal.style.display = "block";
   } );

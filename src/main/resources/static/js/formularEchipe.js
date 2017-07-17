@@ -31,7 +31,7 @@ function saveEchipa(url, data) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        'type': 'PUT',
+        'type': 'POST',
         'url': url,
         'data': JSON.stringify(data),
         'dataType': 'json',

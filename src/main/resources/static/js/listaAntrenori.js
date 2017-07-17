@@ -55,9 +55,24 @@ var table= $('#antrenorTable').DataTable({
           getEchipaByAntrenor(getEchipaByAntrenorUrl);
 
           console.log("echipa", echipa);
-
-
       listaAntrenori.innerHTML = "<li style='text-align: center; font-size: 20px; font-family: serif;'>"+"Echipa:"+echipa.numeEchipa +"</li>";
+
+      $("#delete-btn").on("click", function () {
+                  var url = "http://localhost:8088/antrenor/delete/" + antrenor.id;
+                  $.ajax({
+                      url: url,
+                      type: 'DELETE',
+                      async: false,
+                      success: function () {
+                         alert("Antrenorul a fost sters din sistem!")
+                         window.open("listaAntrenori.html");
+                      },
+                      error: function (xhr, message, errorThrown) {
+                          // alert(errorThrown);
+                      }
+                  });
+              });
+
 
     modal.style.display = "block";
   } );

@@ -49,7 +49,7 @@ var table= $('#antrenorTable').DataTable({
                 getAntrenorById(getAntrenorByIdUrl);
 
     var header = document.getElementById("numeAntrenor");
-  header.innerHTML = antrenor.nume+ " "+antrenor.prenume;
+   header.innerHTML = antrenor.nume+ " "+antrenor.prenume;
 
    var getEchipaByAntrenorUrl = 'http://localhost:8088/echipa/antrenor/' + antrenor.id;
           getEchipaByAntrenor(getEchipaByAntrenorUrl);

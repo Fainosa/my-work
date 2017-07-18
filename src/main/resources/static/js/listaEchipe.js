@@ -57,6 +57,13 @@ $(document).ready(function() {
     var getEchipaByIdUrl = "http://localhost:8088/echipa/" + data.id;
             getEchipaById(getEchipaByIdUrl);
 
+    if(echipa.imagineUrl != null) {
+                // get existing photo from entityImages that have names like: jucator1.png if jucator.id = 1
+                $("#j_imgUpload").attr("src", "images/entityImages/e" + echipa.id + ".png");
+            } else {
+                $("#j_imgUpload").attr("src", "images/entityImages/antrenor.png");
+            }
+
     var header = document.getElementById("numeEchipa");
     header.innerHTML =  echipa.numeEchipa +"</br>" + echipa.locatie;
 

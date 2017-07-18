@@ -53,7 +53,7 @@ var table= $('#antrenorTable').DataTable({
             // get existing photo from entityImages that have names like: jucator1.png if jucator.id = 1
             $("#j_imgUpload").attr("src", "images/entityImages/jucator" + antrenor.id + ".png");
         } else {
-            $("#j_imgUpload").attr("src", "images/entityImages/player.png");
+            $("#j_imgUpload").attr("src", "images/entityImages/antrenor.png");
         }
     var header = document.getElementById("numeAntrenor");
    header.innerHTML = antrenor.nume+ " "+antrenor.prenume;

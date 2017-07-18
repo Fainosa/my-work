@@ -32,12 +32,13 @@ $(document).ready(function() {
                         getCompetitieById(getCompetitieByIdUrl);
                         console.log(competitie.nume);
 
-             var dataIncepereValue=new moment(competitie.dataIncepere,'MM/DD/YYYY').toDate()
-             var dataTerminareValue=new moment(competitie.dataTerminare,'MM/DD/YYYY').toDate()
+             var dataIncepereValue=new Date(competitie.dataIncepere);
+             var dataTerminareValue=new Date(competitie.dataTerminare);
 
-             //var dateString = moment.unix(value).format("MM/DD/YYYY");
 
-             titlu.innerHTML="<p>"+ competitie.nume+"</p>" +"<p>"+ dataIncepereValue+"-" +dataTerminareValue+"</p>";
+
+             titlu.innerHTML="<p>"+ competitie.nume+"</p>" +"<p>"+ dataIncepereValue.getDate() + '/' + (dataIncepereValue.getMonth()+1) + '/' + dataIncepereValue.getFullYear()+" - "
+                               +dataTerminareValue.getDate() + '/' + (dataTerminareValue.getMonth()+1) + '/' + dataTerminareValue.getFullYear()+"</p>";
             console.log(titlu);
 
 

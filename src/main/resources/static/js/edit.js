@@ -79,14 +79,19 @@ $('#stopCompetition').toggle(
 
 
 
-           var titlu=document.getElementById("titlu");
-           var getCompetitieByIdUrl = "http://localhost:8088/competitie/1";
-                                  getCompetitieById(getCompetitieByIdUrl);
-                                  console.log(competitie);
-            console.log(competitie.nume);
-           titlu.innerHTML="<p>"+ competitie.nume+"</p>"
-                    +"<p>"+ competitie.dataIncepere+"-" +competitie.dataTerminare+"</p>";
-                      console.log(titlu);
+          var titlu = document.getElementById("titlu");
+                     var getCompetitieByIdUrl = "http://localhost:8088/competitie/1";
+                                 getCompetitieById(getCompetitieByIdUrl);
+                                 console.log(competitie.nume);
+
+                      var dataIncepereValue=new Date(competitie.dataIncepere);
+                      var dataTerminareValue=new Date(competitie.dataTerminare);
+
+
+
+                      titlu.innerHTML="<p>"+ competitie.nume+"</p>" +"<p>"+ dataIncepereValue.getDate() + '/' + (dataIncepereValue.getMonth()+1) + '/' + dataIncepereValue.getFullYear()+" - "
+                                        +dataTerminareValue.getDate() + '/' + (dataTerminareValue.getMonth()+1) + '/' + dataTerminareValue.getFullYear()+"</p>";
+                     console.log(titlu);
 
       getMeciuri(meciuriUrl);
       console.log(meciuri);

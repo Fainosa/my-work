@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import ro.ase.csie.licenta.domain.Echipa;
+import ro.ase.csie.licenta.domain.Infrangeri;
 import ro.ase.csie.licenta.domain.Victorii;
 import ro.ase.csie.licenta.repository.EchipaRepository;
 import ro.ase.csie.licenta.repository.VictoriiRepository;
@@ -100,6 +101,18 @@ public class VictoriiRestController {
         }
 
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "addEchipa/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Victorii> addEchipaPentruVictorie(@RequestBody Victorii victorii, @PathVariable("id") long id) {
+        Echipa echipa = echipaRepository.findOne(id);
+        if(echipa != null) {
+            victorii.setEchipa(echipa);
+        }
+
+        repository.save(victorii);
+
+        return new ResponseEntity<>(victorii, HttpStatus.CREATED);
     }
 
 }

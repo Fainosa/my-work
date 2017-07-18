@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+import ro.ase.csie.licenta.domain.Antrenor;
 import ro.ase.csie.licenta.domain.Echipa;
 import ro.ase.csie.licenta.domain.Infrangeri;
 import ro.ase.csie.licenta.repository.EchipaRepository;
@@ -102,4 +103,18 @@ public class InfrangeriRestController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "addEchipa/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Infrangeri> addEchipaPentruInfrangere(@RequestBody Infrangeri infrangeri, @PathVariable("id") long id) {
+        Echipa echipa = echipaRepository.findOne(id);
+        if(echipa != null) {
+            infrangeri.setEchipa(echipa);
+        }
+
+        repository.save(infrangeri);
+
+        return new ResponseEntity<>(infrangeri, HttpStatus.CREATED);
+    }
+
 }
+
+

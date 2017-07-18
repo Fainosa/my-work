@@ -14,6 +14,7 @@ $(document).ready(function () {
         });
 
         var bday = $("#j_bday").val();
+
         var email = $('#j_email').val();
         var inaltime = $('#j_inaltime').val();
         var greutate = $('#j_greutate').val();
@@ -32,6 +33,7 @@ $(document).ready(function () {
         jucator.eMail = email;
         jucator.inaltime = inaltime;
         jucator.greutate = greutate;
+        jucator.dataNasterii = bday;
 
         var postUrl = 'http://localhost:8088/jucator/addEchipa/' + id_echipa;
 

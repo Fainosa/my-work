@@ -30,6 +30,7 @@ $(document).ready(function () {
         antrenor.data = bday;
         antrenor.eMail = email;
         antrenor.telefon = telefon;
+        antrenor.dataNasterii = bday;
 
         var postUrl = 'http://localhost:8088/antrenor/addEchipa/' + id_echipa;
 
@@ -61,21 +62,6 @@ $(document).ready(function () {
                         });
                     }
                 })
-
-
-
-                // $('#imgUpload').change(function(){
-                //     var frm = new FormData();
-                //     frm.append('imgUpload', input.files[0]);
-                //     $.ajax({
-                //         method: 'POST',
-                //         address: 'static/images/entityImages',
-                //         data: frm,
-                //         contentType: false,
-                //         processData: false,
-                //         cache: false
-                //     });
-                // });
             }
         }
 

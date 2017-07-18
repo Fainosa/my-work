@@ -16,8 +16,8 @@ $(document).ready(function () {
             {"data": "id"},
             {"data": "nume"},
             {"data": "prenume"},
+            {"data": "eMail"},
             {"data": "descriere"},
-            {"data": "eMail"}
         ]
 
     });

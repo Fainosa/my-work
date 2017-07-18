@@ -48,7 +48,7 @@ public class GraphRestController {
 
         }
 
-        result = result.substring(0, result.length() - 3);
+        result = result.substring(0, result.length() - 2);
         result = result + "}]";
 
         return result;

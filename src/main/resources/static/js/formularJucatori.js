@@ -16,6 +16,7 @@ $(document).ready(function () {
         var bday = $("#j_bday").val();
 
         var email = $('#j_email').val();
+        var descriere=$('#descriere').val();
         var inaltime = $('#j_inaltime').val();
         var greutate = $('#j_greutate').val();
 
@@ -31,6 +32,7 @@ $(document).ready(function () {
         jucator.prenume = prenume;
         jucator.data = bday;
         jucator.eMail = email;
+        jucator.descriere=descriere;
         jucator.inaltime = inaltime;
         jucator.greutate = greutate;
         jucator.dataNasterii = bday;

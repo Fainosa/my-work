@@ -1,3 +1,7 @@
+var competitieUrl="http://localhost:8088/competitie/all";
+
+var competitie;
+
 $(document).ready(function(){
 
 // Set the date we're counting down to
@@ -77,4 +81,54 @@ $('#stopCompetition').toggle(
 					break;
 			}
 		})
+
+
+
+           var titlu=document.getElementById("titlu");
+           var getCompetitieByIdUrl = "http://localhost:8088/competitie/1";
+                                  getCompetitieById(getCompetitieByIdUrl);
+                                  console.log(competitie);
+            console.log(competitie.nume);
+           titlu.innerHTML="<p>"+ competitie.nume+"</p>"+"</br>"
+                    +"<p>"+ competitie.dataIncepere+"-" +competitie.dataTerminare+"</p>";
+                      console.log(titlu);
+
+
+
+
+
+
 });
+
+function getData(api) {
+    $.ajax({
+        url: api,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            competitieObject = data;
+
+        },
+        error: function (xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+
+function getCompetitieById(api) {
+    $.ajax({
+        url: api,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            competitie = data;
+
+        },
+        error: function (xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+

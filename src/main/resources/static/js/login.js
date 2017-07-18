@@ -3,6 +3,8 @@ var users;
 
 $(document).ready(function() {
     getData(dataUrl);
+
+
 });
 
 $("#btn_login" ).click(function() {
@@ -14,6 +16,7 @@ $("#btn_login" ).click(function() {
             if (password === item.password) {
                 alert("Hello, " + item.userName + " ! You are now logged into the application");
                 window.open("main.html");
+
             } else {
                 alert("Hello, " + item.userName + " ! Your password is incorrect! Please try again");
                 $('#input_password').val("");
@@ -24,6 +27,7 @@ $("#btn_login" ).click(function() {
             $('#input_user').val("");
         }
     });
+
 });
 
 function getData(api) {
@@ -46,3 +50,4 @@ $("#input_password").keyup(function(event){
         $("#btn_login").click();
     }
 });
+

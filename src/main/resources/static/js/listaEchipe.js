@@ -1,7 +1,8 @@
 var echipaUrl="http://localhost:8088/echipa/all";
 var echipa;
-var jucator;
+var jucator=[];
 var editor;
+var antrenor;
 
 
 $(document).ready(function() {
@@ -81,9 +82,12 @@ $(document).ready(function() {
       var getJucatorByIdUrl = "http://localhost:8088/jucator/" + data.id;
             getJucatorById(getJucatorByIdUrl);
 
+      var getAntrenorByIdUrl = "http://localhost:8088/antrenor/" + data.id;
+            getAntrenorById(getAntrenorByIdUrl);
+
 
       listaJucatori.innerHTML +="<li style='text-align: center; font-size: 20px; font-family: serif;'>"
-      +"Nume : " +jucator.nume+" "+jucator.prenume +"</li>" ;
+      +"Nume : " +jucator.nume+" "+jucator.prenume +"</br>"+antrenor.nume+" "+antrenor.prenume +"</li>" ;
 
 
 
@@ -96,6 +100,7 @@ $(document).ready(function() {
                 success: function () {
                    alert("Echipa a fost stearsa din sistem!")
                    window.open("listaEchipe.html");
+                   window.close();
                 },
                 error: function (xhr, message, errorThrown) {
                     // alert(errorThrown);
@@ -138,7 +143,20 @@ function getJucatorById(api) {
     });
 }
 
-
+function getAntrenorById(api) {
+    $.ajax({
+        url: api,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            antrenor = data;
+        },
+        error: function (xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
 
 
 

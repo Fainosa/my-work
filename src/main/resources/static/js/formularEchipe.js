@@ -13,7 +13,7 @@ $(document).ready(function () {
         var dataInfiintare = $("#dataInfiintare").val();
 
         var echipa = {};
-        echipa.nume=nume;
+        echipa.numeEchipa=nume;
         echipa.locatie=locatie;
         echipa.dataInfiintare=dataInfiintare;
 

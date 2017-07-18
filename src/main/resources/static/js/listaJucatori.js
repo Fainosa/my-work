@@ -81,6 +81,7 @@ $(document).ready(function () {
                 success: function () {
                    alert("Jucatorul a fost sters din sistem!")
                    window.open("listaJucatori.html");
+
                 },
                 error: function (xhr, message, errorThrown) {
                     // alert(errorThrown);

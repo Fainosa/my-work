@@ -2,6 +2,7 @@ var echipeUrl = "http://localhost:8088/custom/echipe";
 var meciuriUrl = "http://localhost:8088/meci/all";
 
 var meciuri = {};
+var competitie;
 
 $(document).ready(function() {
     $('#teamTable').DataTable({
@@ -25,6 +26,12 @@ $(document).ready(function() {
 
     console.log(meciuri)
 
+//  var getCompetitieByIdUrl = "http://localhost:8088/antrenor/" + data.id;
+//                getCompetitieById(getCompetitieByIdUrl);
+//
+//  var titlu=document.getElementById('titlu');
+//
+//  titlu= competitie.nume;
 
 
 } );
@@ -38,6 +45,11 @@ function populateList(data) {
     });
 
     $('#list').html(content);
+
+     $('#list').click(function() {
+                window.open("edit.html");
+        });
+
 
 }
 
@@ -56,6 +68,22 @@ function getMeciuri(api) {
     });
 }
 
+//function getCompetitieById(api) {
+//    $.ajax({
+//        url: api,
+//        type: 'GET',
+//        dataType: 'json',
+//        async: false,
+//        success: function (data) {
+//            competitie = data;
+//
+//        },
+//        error: function (xhr, message, errorThrown) {
+//            alert(errorThrown);
+//        }
+//    });
+//}
+//
 
 
 //

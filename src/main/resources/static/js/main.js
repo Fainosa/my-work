@@ -24,14 +24,17 @@ $(document).ready(function() {
     getMeciuri(meciuriUrl);
     populateList(meciuri)
 
-    console.log(meciuri)
 
-//  var getCompetitieByIdUrl = "http://localhost:8088/antrenor/" + data.id;
-//                getCompetitieById(getCompetitieByIdUrl);
-//
-//  var titlu=document.getElementById('titlu');
-//
-//  titlu= competitie.nume;
+
+
+ var titlu=document.getElementById("titlu");
+           var getCompetitieByIdUrl = "http://localhost:8088/competitie/1";
+                                  getCompetitieById(getCompetitieByIdUrl);
+
+            console.log(competitie.nume);
+           titlu.innerHTML="<p>"+ competitie.nume+"</p>"
+                    +"<p>"+ competitie.dataIncepere+"-" +competitie.dataTerminare+"</p>";
+                      console.log(titlu);
 
 
 } );
@@ -68,35 +71,25 @@ function getMeciuri(api) {
     });
 }
 
-//function getCompetitieById(api) {
-//    $.ajax({
-//        url: api,
-//        type: 'GET',
-//        dataType: 'json',
-//        async: false,
-//        success: function (data) {
-//            competitie = data;
-//
-//        },
-//        error: function (xhr, message, errorThrown) {
-//            alert(errorThrown);
-//        }
-//    });
-//}
-//
+function getCompetitieById(api) {
+    $.ajax({
+        url: api,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            competitie = data;
+
+        },
+        error: function (xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
 
 
-//
-// $(function() {
-//   if ($.browser.msie && $.browser.version.substr(0,1)<7)
-//   {
-//     $('li').has('ul').mouseover(function(){
-//         $(this).children('ul').css('visibility','visible');
-//         }).mouseout(function(){
-//         $(this).children('ul').css('visibility','hidden');
-//         })
-//   }
-// });
+
+
 
 
 

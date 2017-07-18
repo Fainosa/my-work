@@ -18,7 +18,7 @@ $(document).ready(function () {
         echipa.dataInfiintare=dataInfiintare;
 
         var postUrl = 'http://localhost:8088/echipa/add';
-       console.log(echipa);
+        console.log(echipa);
         saveEchipa(postUrl, echipa)
 
     });
@@ -83,7 +83,7 @@ function saveEchipa(url, data) {
         'data': JSON.stringify(data),
         'dataType': 'json',
         'success': function () {
-           alert("Jucatorul a fost introdus in sistem!");
+           alert("Echipa a fost introdus in sistem!");
             $('#nume').val("");
             $('#locatie').val("");
             $('#dataInfiintare').val("");

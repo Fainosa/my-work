@@ -34,7 +34,7 @@ $(document).ready(function () {
 
         var postUrl = 'http://localhost:8088/antrenor/addEchipa/' + id_echipa;
 
-        // saveAntrenor(postUrl, antrenor)
+        saveAntrenor(postUrl, antrenor)
     });
 
     function readURL(input) {

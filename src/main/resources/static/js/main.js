@@ -84,8 +84,10 @@ function populateList(data) {
     var content = "";
 
     $.each(data, function (i, item) {
-        var line = '<li>' + item.echipe[0].numeEchipa + '<span> vs </span>' + item.echipe[1].numeEchipa + '</li>';
-        content = content + line;
+        if(item != null) {
+            var line = '<li>' + item.echipe[0].numeEchipa + '<span> vs </span>' + item.echipe[1].numeEchipa + '</li>';
+            content = content + line;
+        }
     });
 
     $('#list').html(content);

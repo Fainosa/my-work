@@ -4,20 +4,20 @@ var meciuriUrl = "http://localhost:8088/meci/all";
 var meciuri = {};
 var competitie;
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('#teamTable').DataTable({
-        "ajax" : {
-                    "url" : echipeUrl,
-                    "dataSrc": ''
-                },
+        "ajax": {
+            "url": echipeUrl,
+            "dataSrc": ''
+        },
         "columns": [
-            { "data": "loc" },
-            { "data": "nume" },
-            { "data": "cosuriMarcate" },
-            { "data": "cosuriPrimite" },
-            { "data": "victorii" },
-            { "data": "infrangeri" },
-            { "data": "punctaj" }
+            {"data": "loc"},
+            {"data": "nume"},
+            {"data": "cosuriMarcate"},
+            {"data": "cosuriPrimite"},
+            {"data": "victorii"},
+            {"data": "infrangeri"},
+            {"data": "punctaj"}
         ]
     });
 
@@ -25,25 +25,21 @@ $(document).ready(function() {
     populateList(meciuri)
 
 
+    var titlu = document.getElementById("titlu");
+    var getCompetitieByIdUrl = "http://localhost:8088/competitie/1";
+    getCompetitieById(getCompetitieByIdUrl);
+    console.log(competitie.nume);
+
+    var dataIncepereValue = new moment(competitie.dataIncepere, 'MM/DD/YYYY').toDate()
+    var dataTerminareValue = new moment(competitie.dataTerminare, 'MM/DD/YYYY').toDate()
+
+    //var dateString = moment.unix(value).format("MM/DD/YYYY");
+
+    titlu.innerHTML = "<p>" + competitie.nume + "</p>" + "<p>" + dataIncepereValue + "-" + dataTerminareValue + "</p>";
+    console.log(titlu);
 
 
-            var titlu = document.getElementById("titlu");
-            var getCompetitieByIdUrl = "http://localhost:8088/competitie/1";
-                        getCompetitieById(getCompetitieByIdUrl);
-                        console.log(competitie.nume);
-
-             var dataIncepereValue=new moment(competitie.dataIncepere,'MM/DD/YYYY').toDate()
-             var dataTerminareValue=new moment(competitie.dataTerminare,'MM/DD/YYYY').toDate()
-
-             //var dateString = moment.unix(value).format("MM/DD/YYYY");
-
-             titlu.innerHTML="<p>"+ competitie.nume+"</p>" +"<p>"+ dataIncepereValue+"-" +dataTerminareValue+"</p>";
-            console.log(titlu);
-
-
-
-
-} );
+});
 
 function populateList(data) {
     var content = "";
@@ -65,7 +61,7 @@ function populateList(data) {
             var words = test.split(" ");
             console.log(words)
 
-            window.open('edit.html?echipa1='+words[0]+'$echipa2='+words[2])
+            window.open('edit.html?echipa1=' + words[0] + '$echipa2=' + words[2])
 
         });
 
@@ -80,7 +76,7 @@ function getMeciuri(api) {
         dataType: 'json',
         async: false,
         success: function (data) {
-           meciuri = data;
+            meciuri = data;
         },
         error: function (xhr, message, errorThrown) {
             alert(errorThrown);

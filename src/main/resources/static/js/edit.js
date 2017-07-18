@@ -145,14 +145,23 @@ $(document).ready(function () {
             echipaCastigatoare = echipa1_name;
             echipaPierzatoare = echipa2_name;
             diff = points1 - points2;
-        } else {
+
+            alert("Echipa castigatoare este " + echipaCastigatoare + ", care a inscris " + points1 + " puncte");
+            alert("Echipa " + echipaPierzatoare + " a pierdut la o diferenta de " + diff + " puncte");
+
+        } else if(points1 < points2) {
             echipaCastigatoare = echipa2_name;
             echipaPierzatoare = echipa1_name;
             diff = points2 - points1;
+
+            alert("Echipa castigatoare este " + echipaCastigatoare + ", care a inscris " + points1 + " puncte");
+            alert("Echipa " + echipaPierzatoare + " a pierdut la o diferenta de " + diff + " puncte");
+
+        } else {
+            alert("Meciul s-a terminat la egalitate intre echipele " + echipa1_name " si "+ echipa2_name);
         }
 
-        alert("Echipa castigatoare este " + echipaCastigatoare + ", care a inscris " + points1 + " puncte");
-        alert("Echipa " + echipaPierzatoare + " a pierdut la o diferenta de " + diff + " puncte");
+
     })
 
 

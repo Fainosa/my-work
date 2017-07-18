@@ -16,6 +16,7 @@ $(document).ready(function () {
         var bday = $("#bday").val();
         var email = $('#email').val();
         var telefon = $('#telefon').val();
+        var descriere=$('#descriere').val();
         var echipa = $('#drop-down :selected').text();
 
         var numeEchipaForBrowser = echipa.replace(" ", "%20");
@@ -31,6 +32,7 @@ $(document).ready(function () {
         antrenor.eMail = email;
         antrenor.telefon = telefon;
         antrenor.dataNasterii = bday;
+        antrenor.descriere=descriere;
 
         var postUrl = 'http://localhost:8088/antrenor/addEchipa/' + id_echipa;
 

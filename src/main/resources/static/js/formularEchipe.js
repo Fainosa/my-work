@@ -9,6 +9,7 @@ $(document).ready(function () {
         $('input[type="date"]').change(function () {
             var inputDate = new Date(this.value);
         });
+         var descriere=$('#descriere').val();
 
         var dataInfiintare = $("#dataInfiintare").val();
 
@@ -16,6 +17,7 @@ $(document).ready(function () {
         echipa.numeEchipa=nume;
         echipa.locatie=locatie;
         echipa.dataInfiintare=dataInfiintare;
+        echipa.descriere=descriere;
 
         var postUrl = 'http://localhost:8088/echipa/add';
         console.log(echipa);

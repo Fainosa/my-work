@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
 
     $("#btn_submit").on("click", function () {
@@ -14,6 +13,7 @@ $(document).ready(function () {
         var dataInfiintare = $("#dataInfiintare").val();
 
         var echipa = {};
+
         echipa.numeEchipa=nume;
         echipa.locatie=locatie;
         echipa.dataInfiintare=dataInfiintare;
@@ -25,52 +25,51 @@ $(document).ready(function () {
 
     });
 
-      function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-                    reader.onload = function (e) {
-                        $('#imgUpload').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(input.files[0]);
-                    console.log(input.files[0]);
-
-                    input.files[0].nume = "poza.jpg";
-                    console.log("poza", input.files[0].nume);
-
-                    $.ajax({
-                        url : 'static/images/entityImages',
-                        success: function (data) {
-                            alert('succcessss')
-                            $(data).find("a").attr("href", function (i, val) {
-                                if( val.match(/\.(jpe?g|png|gif)$/) ) {
-                                    $("body").append( "<img src='"+ folder + val +"'>" );
-                                }
-                            });
-                        }
-                    })
-
-
-
-                    // $('#imgUpload').change(function(){
-                    //     var frm = new FormData();
-                    //     frm.append('imgUpload', input.files[0]);
-                    //     $.ajax({
-                    //         method: 'POST',
-                    //         address: 'static/images/entityImages',
-                    //         data: frm,
-                    //         contentType: false,
-                    //         processData: false,
-                    //         cache: false
-                    //     });
-                    // });
-                }
+            reader.onload = function (e) {
+                $('#imgUpload').attr('src', e.target.result);
             }
 
-            $("#imgInp").change(function(){
-                readURL(this);
-            });
+            reader.readAsDataURL(input.files[0]);
+            console.log(input.files[0]);
+
+            input.files[0].nume = "poza.jpg";
+            console.log("poza", input.files[0].nume);
+
+            $.ajax({
+                url: 'static/images/entityImages',
+                success: function (data) {
+                    alert('succcessss')
+                    $(data).find("a").attr("href", function (i, val) {
+                        if (val.match(/\.(jpe?g|png|gif)$/)) {
+                            $("body").append("<img src='" + folder + val + "'>");
+                        }
+                    });
+                }
+            })
+
+
+            // $('#imgUpload').change(function(){
+            //     var frm = new FormData();
+            //     frm.append('imgUpload', input.files[0]);
+            //     $.ajax({
+            //         method: 'POST',
+            //         address: 'static/images/entityImages',
+            //         data: frm,
+            //         contentType: false,
+            //         processData: false,
+            //         cache: false
+            //     });
+            // });
+        }
+    }
+
+    $("#imgInp").change(function () {
+        readURL(this);
+    });
 
 });
 
@@ -85,7 +84,7 @@ function saveEchipa(url, data) {
         'data': JSON.stringify(data),
         'dataType': 'json',
         'success': function () {
-           alert("Echipa a fost introdus in sistem!");
+            alert("Echipa a fost introdus in sistem!");
             $('#nume').val("");
             $('#locatie').val("");
             $('#dataInfiintare').val("");

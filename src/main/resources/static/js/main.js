@@ -25,22 +25,16 @@ $(document).ready(function () {
     populateList(meciuri)
 
 
+    var titlu = document.getElementById("titlu");
+    var getCompetitieByIdUrl = "http://localhost:8088/competitie/1";
+    getCompetitieById(getCompetitieByIdUrl);
+
+    var dataIncepereValue = new Date(competitie.dataIncepere);
+    var dataTerminareValue = new Date(competitie.dataTerminare);
 
 
-            var titlu = document.getElementById("titlu");
-            var getCompetitieByIdUrl = "http://localhost:8088/competitie/1";
-                        getCompetitieById(getCompetitieByIdUrl);
-                        console.log(competitie.nume);
-
-             var dataIncepereValue=new Date(competitie.dataIncepere);
-             var dataTerminareValue=new Date(competitie.dataTerminare);
-
-
-
-             titlu.innerHTML="<p>"+ competitie.nume+"</p>" +"<p>"+ dataIncepereValue.getDate() + '/' + (dataIncepereValue.getMonth()+1) + '/' + dataIncepereValue.getFullYear()+" - "
-                               +dataTerminareValue.getDate() + '/' + (dataTerminareValue.getMonth()+1) + '/' + dataTerminareValue.getFullYear()+"</p>";
-            console.log(titlu);
-
+    titlu.innerHTML = "<p>" + competitie.nume + "</p>" + "<p>" + dataIncepereValue.getDate() + '/' + (dataIncepereValue.getMonth() + 1) + '/' + dataIncepereValue.getFullYear() + " - "
+        + dataTerminareValue.getDate() + '/' + (dataTerminareValue.getMonth() + 1) + '/' + dataTerminareValue.getFullYear() + "</p>";
 
 });
 
@@ -58,10 +52,8 @@ function populateList(data) {
         $(item).click(function () {
             var test = item.innerText;
             var words = test.split(" ");
-            console.log(words)
 
-            window.open('edit.html?echipa1=' + words[0] + '$echipa2=' + words[2])
-
+            window.open('edit.html?echipa1=' + words[0] + '&echipa2=' + words[2])
         });
 
     })

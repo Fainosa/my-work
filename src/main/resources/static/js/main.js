@@ -24,10 +24,7 @@ $(document).ready(function() {
     getMeciuri(meciuriUrl);
     populateList(meciuri)
 
-
-
-
- var titlu=document.getElementById("titlu");
+ var titlu = document.getElementById("titlu");
            var getCompetitieByIdUrl = "http://localhost:8088/competitie/1";
                                   getCompetitieById(getCompetitieByIdUrl);
 

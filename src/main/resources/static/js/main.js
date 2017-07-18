@@ -4,20 +4,20 @@ var meciuriUrl = "http://localhost:8088/meci/all";
 var meciuri = {};
 var competitie;
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('#teamTable').DataTable({
-        "ajax" : {
-                    "url" : echipeUrl,
-                    "dataSrc": ''
-                },
+        "ajax": {
+            "url": echipeUrl,
+            "dataSrc": ''
+        },
         "columns": [
-            { "data": "loc" },
-            { "data": "nume" },
-            { "data": "cosuriMarcate" },
-            { "data": "cosuriPrimite" },
-            { "data": "victorii" },
-            { "data": "infrangeri" },
-            { "data": "punctaj" }
+            {"data": "loc"},
+            {"data": "nume"},
+            {"data": "cosuriMarcate"},
+            {"data": "cosuriPrimite"},
+            {"data": "victorii"},
+            {"data": "infrangeri"},
+            {"data": "punctaj"}
         ]
     });
 
@@ -42,24 +42,29 @@ $(document).ready(function() {
             console.log(titlu);
 
 
-
-
-} );
+});
 
 function populateList(data) {
     var content = "";
 
-    $.each(data, function(i, item) {
-        var line = '<li>' + item.echipe[0].numeEchipa + '<span> vs </span>' + item.echipe[1].numeEchipa +  '</li>';
+    $.each(data, function (i, item) {
+        var line = '<li>' + item.echipe[0].numeEchipa + '<span> vs </span>' + item.echipe[1].numeEchipa + '</li>';
         content = content + line;
     });
 
     $('#list').html(content);
 
-     $('#list').click(function() {
-                window.open("edit.html");
+    $.each($('#list li'), function (i, item) {
+        $(item).click(function () {
+            var test = item.innerText;
+            var words = test.split(" ");
+            console.log(words)
+
+            window.open('edit.html?echipa1=' + words[0] + '$echipa2=' + words[2])
+
         });
 
+    })
 
 }
 
@@ -70,7 +75,7 @@ function getMeciuri(api) {
         dataType: 'json',
         async: false,
         success: function (data) {
-           meciuri = data;
+            meciuri = data;
         },
         error: function (xhr, message, errorThrown) {
             alert(errorThrown);

@@ -1,6 +1,6 @@
 var echipaUrl="http://localhost:8088/echipa/all";
-var echipa;
-var jucator=[];
+var echipa={};
+var jucator;
 var editor;
 var antrenor;
 
@@ -87,8 +87,14 @@ $(document).ready(function() {
 
 
       listaJucatori.innerHTML +="<li style='text-align: center; font-size: 20px; font-family: serif;'>"
-      +"Nume : " +jucator.nume+" "+jucator.prenume +"</br>"+antrenor.nume+" "+antrenor.prenume +"</li>" ;
+      +"Nume : " +jucator.nume+" "+jucator.prenume +"</li>" ;
 
+//  $.each(echipa, function(i, item) {
+//        listaJucatori.innerHTML += '<li>' + item.jucatori[0].nume +'</li>';
+//
+//    });
+
+ //listaJucatori.innerHTML+=populateList(echipa);
 
 
      $("#delete-btn").on("click", function () {
@@ -112,6 +118,23 @@ $(document).ready(function() {
   } );
 } );
 
+
+function populateList(data) {
+    var content = "";
+
+    $.each(data, function(i, item) {
+        var line = '<li>' + item.jucatori[0].nume +'</li>';
+        content = content + line;
+    });
+
+    $('#list').html(content);
+
+     $('#list').click(function() {
+                window.open("edit.html");
+        });
+
+
+}
 
 function getEchipaById(api) {
     $.ajax({

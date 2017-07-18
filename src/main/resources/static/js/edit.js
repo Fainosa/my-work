@@ -1,6 +1,8 @@
 var competitieUrl="http://localhost:8088/competitie/all";
-
 var competitie;
+
+var meciuriUrl = "http://localhost:8088/meci/all";
+var meciuri = {};
 
 $(document).ready(function(){
 
@@ -70,14 +72,14 @@ $('#stopCompetition').toggle(
 	 $('#stopCompetition').click(function(){
 			var startStop=$('#stopCompetition').html();
 			switch ( startStop) {
-				case "STOP COMPETITION":
+				case "STOP MECI":
 					clearInterval(x);
-					document.getElementById("stopCompetition").innerHTML ="START COMPETITION";
+					document.getElementById("stopCompetition").innerHTML ="START MECI";
 					break;
 
-				case "START COMPETITION":
+				case "START MECI":
 					setCountdown();
-					document.getElementById("stopCompetition").innerHTML ="STOP COMPETITION";
+					document.getElementById("stopCompetition").innerHTML ="STOP MECI";
 					break;
 			}
 		})
@@ -89,10 +91,12 @@ $('#stopCompetition').toggle(
                                   getCompetitieById(getCompetitieByIdUrl);
                                   console.log(competitie);
             console.log(competitie.nume);
-           titlu.innerHTML="<p>"+ competitie.nume+"</p>"+"</br>"
+           titlu.innerHTML="<p>"+ competitie.nume+"</p>"
                     +"<p>"+ competitie.dataIncepere+"-" +competitie.dataTerminare+"</p>";
                       console.log(titlu);
 
+      getMeciuri(meciuriUrl);
+      console.log(meciuri);
 
 
 
@@ -125,6 +129,21 @@ function getCompetitieById(api) {
         success: function (data) {
             competitie = data;
 
+        },
+        error: function (xhr, message, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+
+function getMeciuri(api) {
+    $.ajax({
+        url: api,
+        type: 'GET',
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+           meciuri = data;
         },
         error: function (xhr, message, errorThrown) {
             alert(errorThrown);

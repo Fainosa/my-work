@@ -158,7 +158,7 @@ $(document).ready(function () {
             alert("Echipa " + echipaPierzatoare + " a pierdut la o diferenta de " + diff + " puncte");
 
         } else {
-            alert("Meciul s-a terminat la egalitate intre echipele " + echipa1_name " si "+ echipa2_name);
+            alert("Meciul s-a terminat la egalitate intre echipele " + echipa1_name + " si "+ echipa2_name);
         }
 
 

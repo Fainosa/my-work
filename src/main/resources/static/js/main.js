@@ -24,14 +24,23 @@ $(document).ready(function() {
     getMeciuri(meciuriUrl);
     populateList(meciuri)
 
- var titlu = document.getElementById("titlu");
-           var getCompetitieByIdUrl = "http://localhost:8088/competitie/1";
-                                  getCompetitieById(getCompetitieByIdUrl);
 
-            console.log(competitie.nume);
-           titlu.innerHTML="<p>"+ competitie.nume+"</p>"
-                    +"<p>"+ competitie.dataIncepere+"-" +competitie.dataTerminare+"</p>";
-                      console.log(titlu);
+
+
+            var titlu = document.getElementById("titlu");
+            var getCompetitieByIdUrl = "http://localhost:8088/competitie/1";
+                        getCompetitieById(getCompetitieByIdUrl);
+                        console.log(competitie.nume);
+
+             var dataIncepereValue=new moment(competitie.dataIncepere,'MM/DD/YYYY').toDate()
+             var dataTerminareValue=new moment(competitie.dataTerminare,'MM/DD/YYYY').toDate()
+
+             //var dateString = moment.unix(value).format("MM/DD/YYYY");
+
+             titlu.innerHTML="<p>"+ competitie.nume+"</p>" +"<p>"+ dataIncepereValue+"-" +dataTerminareValue+"</p>";
+            console.log(titlu);
+
+
 
 
 } );

@@ -52,47 +52,8 @@ $(document).ready(function () {
 
                     input.files[0].nume = "poza.jpg";
                     console.log("poza", input.files[0].nume);
-
-
-//                    $.ajax({
-//                        url : 'static/images/entityImages',
-//                        success: function (data) {
-//                            alert('succcessss')
-//                            $(data).find("a").attr("href", function (i, val) {
-//                                if( val.match(/\.(jpe?g|png|gif)$/) ) {
-//                                    $("body").append( "<img src='"+ folder + val +"'>" );
-//                                }
-//                            });
-//                        }
-//                    })
-
-
                 }
             }
-
-             $('#imgUpload').change(function(){
-                                     readURL(this);
-                                     var frm = $('#imgUpload').get(0).files;
-                                     if(files.lengh>0)
-                                     {
-                                     frm.append('imgUpload', input.files[0]);
-                                     }
-                                     $.ajax({
-                                         method: 'POST',
-                                         address: 'static/images/entityImages',
-                                         data: frm,
-                                         contentType: false,
-                                         processData: false,
-                                         success:function(result){
-                                         },
-                                         error:function(result){
-                                         }
-                                     });
-                                 });
-
-            $("#imgInp").change(function(){
-                readURL(this);
-            });
 
 });
 
@@ -108,6 +69,7 @@ function saveJucator(url, data) {
         'dataType': 'json',
         'success': function () {
            alert("Jucatorul a fost introdus in sistem!");
+            window.open("listaJucatori.html");
             $('#j_nume').val("");
             $('#j_prenume').val("");
             $('#j_email').val("");

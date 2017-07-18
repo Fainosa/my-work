@@ -20,6 +20,7 @@ public class Antrenor {
     private String eMail;
     private String telefon;
     private String imagineUrl;
+    private String descriere;
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="id_echipa")
@@ -29,7 +30,7 @@ public class Antrenor {
 
     }
 
-    public Antrenor(String nume, String prenume, Date dataNasterii, String eMail, String telefon, String imagineUrl, Echipa echipa) {
+    public Antrenor(String nume, String prenume, Date dataNasterii, String eMail, String telefon, String imagineUrl, String descriere, Echipa echipa) {
         this.nume = nume;
         this.prenume = prenume;
         this.dataNasterii = dataNasterii;
@@ -37,6 +38,7 @@ public class Antrenor {
         this.telefon = telefon;
         this.imagineUrl = imagineUrl;
         this.echipa = echipa;
+        this.descriere = descriere;
     }
 
     public long getId() {
@@ -61,6 +63,14 @@ public class Antrenor {
 
     public void setPrenume(String prenume) {
         this.prenume = prenume;
+    }
+
+    public String getDescriere() {
+        return descriere;
+    }
+
+    public void setDescriere( String descriere ) {
+        this.descriere = descriere;
     }
 
     public Date getDataNasterii() {

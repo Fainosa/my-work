@@ -23,19 +23,20 @@ public class Jucator {
     private int numarJucator;
     private String parola;
     private String imagineUrl;
+    private String descriere;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_echipa")
     private Echipa echipa;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private User user;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    private User user;
 
     public Jucator() {
 
     }
 
-    public Jucator(String nume, String prenume, float inaltime, float greutate, Date dataNasterii, String eMail, int numarJucator, String parola, String imagineUrl, Echipa echipa, User user) {
+    public Jucator( String nume, String prenume, float inaltime, float greutate, Date dataNasterii, String eMail, int numarJucator, String parola, String imagineUrl, String descriere, Echipa echipa) {
         this.nume = nume;
         this.prenume = prenume;
         this.inaltime = inaltime;
@@ -45,8 +46,9 @@ public class Jucator {
         this.numarJucator = numarJucator;
         this.parola = parola;
         this.imagineUrl = imagineUrl;
+        this.descriere = descriere;
         this.echipa = echipa;
-        this.user = user;
+//        this.user = user;
     }
 
     public long getId() {
@@ -120,14 +122,14 @@ public class Jucator {
     public void setParola(String parola) {
         this.parola = parola;
     }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+//
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public String getImagineUrl() {
         return imagineUrl;
@@ -135,6 +137,14 @@ public class Jucator {
 
     public void setImagineUrl(String imagineUrl) {
         this.imagineUrl = imagineUrl;
+    }
+
+    public String getDescriere() {
+        return descriere;
+    }
+
+    public void setDescriere( String descriere ) {
+        this.descriere = descriere;
     }
 
     @JsonIgnore

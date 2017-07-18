@@ -7,25 +7,6 @@ var antrenor;
 
 $(document).ready(function() {
 
-//editor = new $.fn.dataTable.Editor( {
-//          ajax: "../php/staff.php",
-//          table: "#echipaTanle",
-//          fields: [ {
-//                  label: "",
-//                  name: "id"
-//              }, {
-//                  label: "Nume Echipa:",
-//                  name: "numeEchipa"
-//              }, {
-//                  label: "Locatie:",
-//                  name: "locatie"
-//              }
-//          ]
-//      } );
-//
-//   $('#echipaTable').on( 'click', 'tbody td:not(:first-child)', function (e) {
-//          editor.inline( this );
-//      } );
  var table= $('#echipaTable').DataTable({
         "ajax" : {
                     "url" : echipaUrl,
@@ -35,7 +16,7 @@ $(document).ready(function() {
             { "data": "id" },
             { "data": "numeEchipa" },
             { "data": "locatie" },
-            { "data": "dataInfiintare" }
+            { "data": "descriere" }
         ],
         select: {
                     style:    'os',

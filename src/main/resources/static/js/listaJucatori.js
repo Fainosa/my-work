@@ -16,7 +16,7 @@ $(document).ready(function () {
             {"data": "id"},
             {"data": "nume"},
             {"data": "prenume"},
-            {"data": "dataNasterii"},
+            {"data": "descriere"},
             {"data": "eMail"}
         ]
 

@@ -22,6 +22,7 @@ public class Echipa {
     private int cosuriMarcate;
     private int cosuriPrimite;
     private String imagineUrl;
+    private String descriere;
 
     @OneToMany(mappedBy = "echipa")
     private List<Jucator> jucatori;
@@ -43,7 +44,7 @@ public class Echipa {
 
     }
 
-    public Echipa(String numeEchipa, String locatie, Date dataInfiintare, int cosuriMarcate, int cosuriPrimite, String imagineUrl,
+    public Echipa(String numeEchipa, String locatie, Date dataInfiintare, int cosuriMarcate, int cosuriPrimite, String imagineUrl, String descriere,
                   List<Jucator> jucatori, List<Antrenor> antrenori, Meci meci, List<Infrangeri> infrangeri, List<Victorii> victorii) {
         this.numeEchipa = numeEchipa;
         this.locatie = locatie;
@@ -56,6 +57,7 @@ public class Echipa {
         this.meci = meci;
         this.infrangeri = infrangeri;
         this.victorii = victorii;
+        this.descriere = descriere;
     }
 
     public long getId() {
@@ -146,7 +148,15 @@ public class Echipa {
         return imagineUrl;
     }
 
-    public void setImagineUrl(String imagineUrl) {
+    public String getDescriere() {
+        return descriere;
+    }
+
+    public void setDescriere( String descriere ) {
+        this.descriere = descriere;
+    }
+
+    public void setImagineUrl( String imagineUrl) {
         this.imagineUrl = imagineUrl;
     }
 

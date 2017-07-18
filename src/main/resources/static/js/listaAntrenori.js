@@ -15,7 +15,7 @@ var table= $('#antrenorTable').DataTable({
             { "data": "id" },
             { "data": "nume" },
             { "data": "prenume" },
-            { "data": "dataNasterii" },
+            { "data": "descriere" },
             { "data": "eMail" },
             { "data": "telefon"}
         ]

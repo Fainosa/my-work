@@ -54,9 +54,9 @@ $(document).ready(function () {
 
         if(jucator.imagineUrl != null) {
             // get existing photo from entityImages that have names like: jucator1.png if jucator.id = 1
-            $("#j_imgUpload").attr("src", "images/entityImages/jucator" + jucator.id + ".jpg");
+            $("#j_imgUpload").attr("src", "images/entityImages/jucator" + jucator.id + ".png");
         } else {
-            $("#j_imgUpload").attr("src", "images/entityImages/player.jpg");
+            $("#j_imgUpload").attr("src", "images/entityImages/player.png");
         }
 
         var header = document.getElementById("numeJucator");

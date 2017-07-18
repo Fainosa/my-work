@@ -22,7 +22,7 @@ $(document).ready(function () {
     });
 
     getMeciuri(meciuriUrl);
-    populateList(meciuri)
+    populateList(meciuri);
 
 
 
@@ -39,10 +39,53 @@ $(document).ready(function () {
 
              titlu.innerHTML="<p>"+ competitie.nume+"</p>" +"<p>"+ dataIncepereValue.getDate() + '/' + (dataIncepereValue.getMonth()+1) + '/' + dataIncepereValue.getFullYear()+" - "
                                +dataTerminareValue.getDate() + '/' + (dataTerminareValue.getMonth()+1) + '/' + dataTerminareValue.getFullYear()+"</p>";
-            console.log(titlu);
+
 
 
 });
+
+function schimbaData(){
+    var x=document.getElementById("m_picker");
+
+ if(x.value=="2017-07-19")
+    {
+
+       populateList(meciuri);
+
+  $("#list").empty();
+  $("#list").append(line);
+
+    }
+
+
+    if(x.value=="2017-07-20")
+    {
+
+      var content2 = "";
+
+           var line = '<li>' + "Bulls" + '<span> vs </span>' + "Knicks" + '</li>';
+                  content2 = content2 + line;
+
+  $("#list").empty();
+  $("#list").append(line);
+
+    }
+
+       if(x.value=="2017-07-21")
+        {
+
+          var content2 = "";
+
+               var line = '<li>' + "Cleveland" + '<span> vs </span>' + "Portland" + '</li>';
+                      content2 = content2 + line;
+
+      $("#list").empty();
+      $("#list").append(line);
+
+        }
+
+
+}
 
 function populateList(data) {
     var content = "";

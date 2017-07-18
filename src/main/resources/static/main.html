@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-    <script src="js/main.js"></script>
+
 
     <style>
 body {
@@ -29,7 +29,7 @@ body {
         <p id="titlu" style="color:white; text-align:center; color: rgba(245, 245, 245, 0.73); font-size: 18px; " id="dates"></p>
         <div class="competition">
             <div class="team1">
-                <img src="images/e1.png"/>
+                <img src="images/competitie.png"/>
             </div>
         </div>
     </div>
@@ -85,10 +85,11 @@ body {
         </div>
         <div class="col-md-4 rightColumn">
             <h3> Meciuri viitoare: </h3>
-            <input id="m_picker" type="date" name="competitions"><p></p>
+            <input id="m_picker" value="2017-07-19" type="date" onchange="schimbaData()" name="competitions"><p></p>
             <ul id="list"></ul>
         </div>
     </div>
 </div>
+<script src="js/main.js"></script>
 </body>
 </html>

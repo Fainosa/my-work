@@ -39,17 +39,28 @@ $(document).ready(function() {
 function populateList(data) {
     var content = "";
 
-    $.each(data, function(i, item) {
-        var line = '<li>' + item.echipe[0].numeEchipa + '<span> vs </span>' + item.echipe[1].numeEchipa +  '</li>';
+    $.each(data, function (i, item) {
+        var line = '<li>' + item.echipe[0].numeEchipa + '<span> vs </span>' + item.echipe[1].numeEchipa + '</li>';
         content = content + line;
     });
 
+    // var lines = $('#list li')[0];
+    // console.log(lines)
+
+
     $('#list').html(content);
 
-     $('#list').click(function() {
-                window.open("edit.html");
+    $.each($('#list li'), function (i, item) {
+        $(item).click(function () {
+            var test = item.innerText;
+            var words = test.split(" ");
+            console.log(words)
+
+            window.open('edit.html?echipa1='+words[0]+'$echipa2='+words[2])
+
         });
 
+    })
 
 }
 
